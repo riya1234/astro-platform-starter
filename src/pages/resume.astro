@@ -1,115 +1,534 @@
 ---
-import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Your Name — Resume" activeNav="/resume">
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-10">
-        <h1>Resume</h1>
-        <!-- Link to a downloadable PDF of your resume -->
-        <!-- <a href="/resume.pdf" download class="btn">Download PDF</a> -->
-    </div>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Riya Hariyaplar | Resume</title>
+    <meta name="robots" content="noindex, nofollow" />
 
-    <!-- Education -->
-    <section class="mb-12">
-        <h2 class="section-heading">Education</h2>
+    <style>
+      :root {
+        --bg: #f8fbff;
+        --bg-soft: #eef5ff;
+        --card: rgba(255, 255, 255, 0.92);
+        --card-border: rgba(96, 165, 250, 0.18);
+        --text: #122033;
+        --muted: #4f6480;
+        --accent: #2f6fed;
+        --accent-2: #5c8df6;
+        --line: rgba(96, 165, 250, 0.2);
+        --shadow: 0 14px 40px rgba(37, 99, 235, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(147, 197, 253, 0.3), transparent 30%),
+          radial-gradient(circle at top right, rgba(191, 219, 254, 0.45), transparent 28%),
+          linear-gradient(180deg, #ffffff 0%, #f8fbff 45%, #eef5ff 100%);
+        color: var(--text);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 2rem));
+        margin: 0 auto;
+      }
+
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(14px);
+        background: rgba(255, 255, 255, 0.8);
+        border-bottom: 1px solid rgba(96, 165, 250, 0.12);
+      }
+
+      .nav-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.1rem 0;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .brand {
+        font-size: 1.8rem;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        color: #17325c;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+
+      .nav-links a {
+        color: var(--muted);
+        padding: 0.7rem 1rem;
+        border-radius: 999px;
+        transition: 0.2s ease;
+        font-weight: 600;
+      }
+
+      .nav-links a:hover {
+        background: rgba(96, 165, 250, 0.12);
+        color: var(--accent);
+      }
+
+      .nav-links a.active {
+        background: rgba(96, 165, 250, 0.14);
+        color: var(--accent);
+      }
+
+      main {
+        padding: 3.5rem 0 4rem;
+      }
+
+      .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-bottom: 2.75rem;
+      }
+
+      h1 {
+        font-size: clamp(2.8rem, 6vw, 4.5rem);
+        line-height: 1.02;
+        margin: 0;
+        letter-spacing: -0.05em;
+        color: #10213a;
+      }
+
+      .page-subtitle {
+        color: var(--muted);
+        font-size: 1.05rem;
+        margin-top: 0.6rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.65rem;
+        border-radius: 999px;
+        padding: 1rem 1.4rem;
+        font-weight: 700;
+        transition: 0.2s ease;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #2f6fed, #60a5fa);
+        color: white;
+        box-shadow: 0 10px 28px rgba(59, 130, 246, 0.18);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-1px);
+      }
+
+      section {
+        margin-top: 3.5rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+        margin-bottom: 0.75rem;
+        color: #17325c;
+      }
+
+      .section-line {
+        height: 1px;
+        width: 100%;
+        background: var(--line);
+        margin-bottom: 1.5rem;
+      }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        border-radius: 24px;
+        box-shadow: var(--shadow);
+        padding: 1.8rem;
+      }
+
+      .stack {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .resume-item {
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(96, 165, 250, 0.14);
+        border-radius: 22px;
+        box-shadow: 0 10px 28px rgba(37, 99, 235, 0.06);
+        padding: 1.5rem;
+      }
+
+      .item-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .item-title {
+        font-size: 1.45rem;
+        font-weight: 700;
+        color: #17325c;
+        margin: 0 0 0.25rem 0;
+      }
+
+      .item-subtitle {
+        color: var(--accent);
+        font-weight: 600;
+        margin-bottom: 0.35rem;
+      }
+
+      .item-meta {
+        color: var(--muted);
+        font-size: 0.98rem;
+        text-align: right;
+        min-width: 200px;
+      }
+
+      .item-meta div + div {
+        margin-top: 0.25rem;
+      }
+
+      .resume-list {
+        margin: 1rem 0 0 0;
+        padding-left: 1.2rem;
+        color: var(--muted);
+        line-height: 1.85;
+        font-size: 1rem;
+      }
+
+      .resume-list li + li {
+        margin-top: 0.35rem;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+
+      .skill-block {
+        background: rgba(255, 255, 255, 0.88);
+        border: 1px solid rgba(96, 165, 250, 0.14);
+        border-radius: 20px;
+        padding: 1.25rem;
+      }
+
+      .skill-block h3 {
+        margin: 0 0 0.75rem 0;
+        font-size: 1.05rem;
+        color: #17325c;
+      }
+
+      .skill-block p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      .top-contact {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem 1.5rem;
+        color: var(--muted);
+        font-size: 1rem;
+        margin-top: 0.75rem;
+      }
+
+      .top-contact a {
+        color: var(--accent);
+        text-decoration: underline;
+      }
+
+      footer {
+        margin-top: 4rem;
+        padding: 1.5rem 0 2.5rem;
+        color: var(--muted);
+        text-align: center;
+        border-top: 1px solid rgba(96, 165, 250, 0.12);
+      }
+
+      @media (max-width: 900px) {
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .item-meta {
+          text-align: left;
+          min-width: auto;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .nav-inner {
+          justify-content: center;
+        }
+
+        .brand {
+          width: 100%;
+          text-align: center;
+        }
+
+        .nav-links {
+          justify-content: center;
+        }
+
+        .page-header {
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <div class="container nav-inner">
+        <div class="brand">Riya Hariyaplar</div>
+        <div class="nav-links">
+          <a href="/">About</a>
+          <a href="/resume" class="active">Resume</a>
+          <a href="/skills">Skills &amp; Achievements</a>
+          <a href="/interests">Interests</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container">
+      <div class="page-header">
+        <div>
+          <h1>Resume</h1>
+          <div class="page-subtitle">
+            Academic background, technical skills, and professional experience.
+          </div>
+          <div class="top-contact">
+            <span>408-887-5180</span>
+            <a href="mailto:rhariyaplar@ucla.edu">rhariyaplar@ucla.edu</a>
+            <span>San Jose, CA</span>
+          </div>
+        </div>
+
+        <a class="btn btn-primary" href="/resume.pdf" download>
+          Download Resume PDF
+        </a>
+      </div>
+
+      <section>
+        <div class="section-title">Education</div>
+        <div class="section-line"></div>
+
         <div class="card">
-            <div class="flex flex-col sm:flex-row sm:justify-between gap-1 mb-1">
-                <h3>University of California, Los Angeles</h3>
-                <span class="text-sm text-muted">Expected June 2026</span>
+          <div class="item-top">
+            <div>
+              <div class="item-title">University of California, Los Angeles (UCLA)</div>
+              <div class="item-subtitle">B.S. in Economics &amp; Data Science Double Major</div>
             </div>
-            <p class="text-primary-light font-medium">B.S. Data Science, Concentration in Economics</p>
-            <p class="text-sm text-gray-400 mt-2">
-                <!-- Update with your actual GPA, honors, etc. -->
-                GPA: X.XX / 4.00
-            </p>
-            <p class="text-sm text-gray-400 mt-1">
-                <span class="text-gray-300 font-medium">Relevant Coursework:</span>
-                Econometrics, Statistical Modeling, Data Analysis, Microeconomic Theory,
-                Machine Learning, Probability & Statistics, Database Systems
-            </p>
+
+            <div class="item-meta">
+              <div><strong>Graduation:</strong> June 2026</div>
+              <div><strong>GPA:</strong> 3.9</div>
+            </div>
+          </div>
+
+          <ul class="resume-list">
+            <li><strong>Awards:</strong> Goldman Sachs Possibilities Summit Fellow, 2nd Place at Stanford Speech Tournament, &amp; Dean’s Honor Roll</li>
+            <li><strong>Affiliations:</strong> Tech &amp; Finance Crew of Bruin Women In Business, Bruin Capital Management, AI Club</li>
+            <li><strong>Relevant Coursework:</strong> Corporate Strategy, Advanced Data Science, Multivariable Calculus, Data Structures and Design, Discrete Math, Advanced Probability &amp; Statistics, Machine Learning, Microeconomic Theory, &amp; Accounting</li>
+          </ul>
         </div>
-    </section>
+      </section>
 
-    <!-- Experience -->
-    <section class="mb-12">
-        <h2 class="section-heading">Experience</h2>
-        <div class="space-y-4">
-            <!-- Experience Item 1 -->
-            <div class="card">
-                <div class="flex flex-col sm:flex-row sm:justify-between gap-1 mb-1">
-                    <h3>Job Title / Role</h3>
-                    <span class="text-sm text-muted">Month Year — Present</span>
-                </div>
-                <p class="text-primary-light font-medium mb-2">Company / Organization</p>
-                <ul class="list-disc list-inside text-sm text-gray-400 space-y-1">
-                    <li>Describe your key responsibility or achievement here</li>
-                    <li>Quantify impact where possible (e.g., "Improved process efficiency by 20%")</li>
-                    <li>Highlight relevant skills used (data analysis, economic modeling, etc.)</li>
-                </ul>
-            </div>
+      <section>
+        <div class="section-title">Technical Skills</div>
+        <div class="section-line"></div>
 
-            <!-- Experience Item 2 -->
-            <div class="card">
-                <div class="flex flex-col sm:flex-row sm:justify-between gap-1 mb-1">
-                    <h3>Job Title / Role</h3>
-                    <span class="text-sm text-muted">Month Year — Month Year</span>
-                </div>
-                <p class="text-primary-light font-medium mb-2">Company / Organization</p>
-                <ul class="list-disc list-inside text-sm text-gray-400 space-y-1">
-                    <li>Describe your key responsibility or achievement here</li>
-                    <li>Quantify impact where possible</li>
-                    <li>Highlight relevant skills used</li>
-                </ul>
-            </div>
+        <div class="skills-grid">
+          <div class="skill-block">
+            <h3>Programming Languages</h3>
+            <p>Python, R, SQL, MySQL, NoSQL</p>
+          </div>
+
+          <div class="skill-block">
+            <h3>Data Engineering &amp; Analytics</h3>
+            <p>Hive, Spark, Hadoop, ETL Pipelines, Data Cleaning, Large-Scale Data Analysis</p>
+          </div>
+
+          <div class="skill-block">
+            <h3>Machine Learning &amp; Statistics</h3>
+            <p>Pytorch, Tensorflow, Numpy, User Segmentation, A/B Testing, Experiment Design, LLM</p>
+          </div>
+
+          <div class="skill-block">
+            <h3>Visualization &amp; BI Tools</h3>
+            <p>Tableau, Power BI, Looker, Excel, MS Office, Google Workspace</p>
+          </div>
+
+          <div class="skill-block">
+            <h3>Product</h3>
+            <p>Jira, Confluence, SCRUM, Agile, Adobe Creative Cloud, Figma (Prototyping &amp; Wireframing), CRM</p>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- Skills -->
-    <section class="mb-12">
-        <h2 class="section-heading">Skills</h2>
+      <section>
+        <div class="section-title">Work Experience</div>
+        <div class="section-line"></div>
+
+        <div class="stack">
+          <div class="resume-item">
+            <div class="item-top">
+              <div>
+                <div class="item-title">American Express — Product Management &amp; Data Science Intern</div>
+                <div class="item-subtitle">Summer 2025 – Enterprise Digital Data Solutions Team</div>
+              </div>
+
+              <div class="item-meta">
+                <div>Jun 2025 – Aug 2025</div>
+                <div>New York, NY</div>
+              </div>
+            </div>
+
+            <ul class="resume-list">
+              <li>Collaborated with 35+ product managers and engineers across Consumer and Corporate units to align on migration goals and support adoption of a new enterprise-wide demographic data system, ensuring cross-team alignment and smoother rollout.</li>
+              <li>Created data architecture maps and supported migration pipelines, streamlining integration across conflicting schemas.</li>
+              <li>Defined data integrity roadmap by prioritizing fixes across 10,000+ inconsistencies, ensuring reliability of customer insights used for product and strategy decisions.</li>
+              <li>Unified demographic data across 21 markets, tailoring solutions to local regulatory frameworks to improve consistency.</li>
+              <li>Synthesized SQL and Excel-driven data quality analyses into executive dashboards, shaping leadership priorities on closing data gaps and improving reporting accuracy.</li>
+              <li>Optimized query performance and schema design, reducing runtime for high-volume demographic data pulls by 17%.</li>
+              <li>Designed playbooks and knowledge-sharing sessions that empowered cross-market teams to adopt new data tools.</li>
+            </ul>
+          </div>
+
+          <div class="resume-item">
+            <div class="item-top">
+              <div>
+                <div class="item-title">American Express — Founder of Project Local</div>
+                <div class="item-subtitle">Summer 2025 – Beyond internship goals, I launched a new strategic initiative to strengthen AMEX’s vision</div>
+              </div>
+
+              <div class="item-meta">
+                <div>Jun 2025 – Aug 2025</div>
+                <div>New York, NY</div>
+              </div>
+            </div>
+
+            <ul class="resume-list">
+              <li>Identified an area of opportunity in Amex’s small business strategy and created Project Local to boost merchant loyalty.</li>
+              <li>Presented to Amex’s CMO, CTO, EVPs, and SVPs, securing executive buy-in by making a compelling case for its impact.</li>
+              <li>Collaborated with 8 cross-functional teams (marketing, product, design, analytics, risk, etc.) to co-develop program features, pressure-test implementation approaches, and iterate on feedback to refine the program design.</li>
+              <li>Transformed insights from 25+ merchant workshops into user-centered product requirements, ensuring that pilot design directly addressed merchant pain points and loyalty drivers.</li>
+              <li>Visualized customer journeys through Figma prototypes and persuasive storytelling, illustrating cardmember value.</li>
+              <li>Designed a resource-efficient rollout plan by outlining integration pathways and conducting feasibility studies, leveraging existing Amex infrastructure and frameworks.</li>
+              <li>Modeled program impact using historical merchant data, forecasting a 15% lift in loyalty-driven revenue.</li>
+            </ul>
+          </div>
+
+          <div class="resume-item">
+            <div class="item-top">
+              <div>
+                <div class="item-title">Apical Apps — Data Science and Product Analytics Intern</div>
+                <div class="item-subtitle">Summer 2024 - Cloud Solutions Team</div>
+              </div>
+
+              <div class="item-meta">
+                <div>May 2024 – Sept 2024</div>
+                <div>San Jose, CA</div>
+              </div>
+            </div>
+
+            <ul class="resume-list">
+              <li>Optimized data architecture and designed 4 MySQL schemas, cutting query times and accelerating analytics workflows.</li>
+              <li>Partnered with clients to translate business needs into a prioritized product roadmap, aligning engineering resources to maximize user adoption and measurable business impact.</li>
+              <li>Partnered with engineering teams to build and launch a digital product, achieving a 12% increase in adoption.</li>
+              <li>Utilized Python and SQL to perform data manipulation and aggregation tasks, enabling insightful decision-making.</li>
+              <li>Leveraged agile methodologies to manage product backlogs, ensuring the timely release of new features.</li>
+            </ul>
+          </div>
+
+          <div class="resume-item">
+            <div class="item-top">
+              <div>
+                <div class="item-title">Opal AI — Product Development and Research Intern</div>
+                <div class="item-subtitle">Spring 2024 - Growth &amp; Product Analytics Team</div>
+              </div>
+
+              <div class="item-meta">
+                <div>Mar 2024 – May 2024</div>
+                <div>Los Angeles, CA</div>
+              </div>
+            </div>
+
+            <ul class="resume-list">
+              <li>Translated complex data into 10+ stakeholder-facing dashboards, driving product decisions and roadmap prioritization.</li>
+              <li>Developed and shipped a new product feature utilizing SQL and user behavior data, increasing user engagement by 15%.</li>
+              <li>Executed A/B tests on new features, optimizing conversion rates and driving product adoption.</li>
+              <li>Customized technology solutions through detailed competitive analysis of 12+ companies, increasing profit by 3%.</li>
+              <li>Provided strategic insights for managing $200,000 in Google Cloud credits, aligning them with product goals.</li>
+            </ul>
+          </div>
+
+          <div class="resume-item">
+            <div class="item-top">
+              <div>
+                <div class="item-title">Engineers without Borders (Chicken Farm in Nepal) — Project Lead</div>
+                <div class="item-subtitle">Winter 2024 - Sustainable Chicken Farm in rural Nepal</div>
+              </div>
+
+              <div class="item-meta">
+                <div>Jan 2024 – Mar 2024</div>
+                <div>Los Angeles, CA</div>
+              </div>
+            </div>
+
+            <ul class="resume-list">
+              <li>Led the creation of a sustainable chicken farm in Nepal to boost local food security and economic resilience.</li>
+              <li>Partnered with Nepalese farmers and UCLA researchers to co-design solutions, integrating dual perspectives to achieve goals.</li>
+              <li>Analyzed feed efficiency, crop yields, and irrigation data to recommend efficient practices under limited data conditions.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-title">Volunteer Work</div>
+        <div class="section-line"></div>
+
         <div class="card">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                    <h3 class="text-sm font-semibold text-gray-300 mb-2">Technical</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tag">Python</span>
-                        <span class="tag">R</span>
-                        <span class="tag">SQL</span>
-                        <span class="tag">Excel</span>
-                        <span class="tag">Stata</span>
-                        <span class="tag">Tableau</span>
-                        <!-- Add or remove skills as needed -->
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-sm font-semibold text-gray-300 mb-2">Areas of Knowledge</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tag">Econometrics</span>
-                        <span class="tag">Statistical Analysis</span>
-                        <span class="tag">Data Visualization</span>
-                        <span class="tag">Economic Research</span>
-                        <span class="tag">Financial Modeling</span>
-                        <!-- Add or remove as needed -->
-                    </div>
-                </div>
-            </div>
+          <ul class="resume-list" style="margin-top: 0;">
+            <li>Climate Change Lobbying with US Congressmen and helped write climate articles for newspapers.</li>
+          </ul>
         </div>
-    </section>
+      </section>
+    </main>
 
-    <!-- Activities & Leadership -->
-    <section class="mb-12">
-        <h2 class="section-heading">Activities & Leadership</h2>
-        <div class="space-y-4">
-            <div class="card">
-                <div class="flex flex-col sm:flex-row sm:justify-between gap-1 mb-1">
-                    <h3>Club / Organization Name</h3>
-                    <span class="text-sm text-muted">Year — Present</span>
-                </div>
-                <p class="text-primary-light font-medium mb-2">Role / Position</p>
-                <p class="text-sm text-gray-400">
-                    Brief description of your involvement and contributions.
-                </p>
-            </div>
-        </div>
-    </section>
-</Layout>
+    <footer>
+      2026 Riya Hariyaplar. All rights reserved.
+    </footer>
+  </body>
+</html>
