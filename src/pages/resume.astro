@@ -1,0 +1,115 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Your Name — Resume" activeNav="/resume">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-10">
+        <h1>Resume</h1>
+        <!-- Link to a downloadable PDF of your resume -->
+        <!-- <a href="/resume.pdf" download class="btn">Download PDF</a> -->
+    </div>
+
+    <!-- Education -->
+    <section class="mb-12">
+        <h2 class="section-heading">Education</h2>
+        <div class="card">
+            <div class="flex flex-col sm:flex-row sm:justify-between gap-1 mb-1">
+                <h3>University of California, Los Angeles</h3>
+                <span class="text-sm text-muted">Expected June 2026</span>
+            </div>
+            <p class="text-primary-light font-medium">B.S. Data Science, Concentration in Economics</p>
+            <p class="text-sm text-gray-400 mt-2">
+                <!-- Update with your actual GPA, honors, etc. -->
+                GPA: X.XX / 4.00
+            </p>
+            <p class="text-sm text-gray-400 mt-1">
+                <span class="text-gray-300 font-medium">Relevant Coursework:</span>
+                Econometrics, Statistical Modeling, Data Analysis, Microeconomic Theory,
+                Machine Learning, Probability & Statistics, Database Systems
+            </p>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="mb-12">
+        <h2 class="section-heading">Experience</h2>
+        <div class="space-y-4">
+            <!-- Experience Item 1 -->
+            <div class="card">
+                <div class="flex flex-col sm:flex-row sm:justify-between gap-1 mb-1">
+                    <h3>Job Title / Role</h3>
+                    <span class="text-sm text-muted">Month Year — Present</span>
+                </div>
+                <p class="text-primary-light font-medium mb-2">Company / Organization</p>
+                <ul class="list-disc list-inside text-sm text-gray-400 space-y-1">
+                    <li>Describe your key responsibility or achievement here</li>
+                    <li>Quantify impact where possible (e.g., "Improved process efficiency by 20%")</li>
+                    <li>Highlight relevant skills used (data analysis, economic modeling, etc.)</li>
+                </ul>
+            </div>
+
+            <!-- Experience Item 2 -->
+            <div class="card">
+                <div class="flex flex-col sm:flex-row sm:justify-between gap-1 mb-1">
+                    <h3>Job Title / Role</h3>
+                    <span class="text-sm text-muted">Month Year — Month Year</span>
+                </div>
+                <p class="text-primary-light font-medium mb-2">Company / Organization</p>
+                <ul class="list-disc list-inside text-sm text-gray-400 space-y-1">
+                    <li>Describe your key responsibility or achievement here</li>
+                    <li>Quantify impact where possible</li>
+                    <li>Highlight relevant skills used</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="mb-12">
+        <h2 class="section-heading">Skills</h2>
+        <div class="card">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 mb-2">Technical</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag">Python</span>
+                        <span class="tag">R</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">Excel</span>
+                        <span class="tag">Stata</span>
+                        <span class="tag">Tableau</span>
+                        <!-- Add or remove skills as needed -->
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 mb-2">Areas of Knowledge</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag">Econometrics</span>
+                        <span class="tag">Statistical Analysis</span>
+                        <span class="tag">Data Visualization</span>
+                        <span class="tag">Economic Research</span>
+                        <span class="tag">Financial Modeling</span>
+                        <!-- Add or remove as needed -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities & Leadership -->
+    <section class="mb-12">
+        <h2 class="section-heading">Activities & Leadership</h2>
+        <div class="space-y-4">
+            <div class="card">
+                <div class="flex flex-col sm:flex-row sm:justify-between gap-1 mb-1">
+                    <h3>Club / Organization Name</h3>
+                    <span class="text-sm text-muted">Year — Present</span>
+                </div>
+                <p class="text-primary-light font-medium mb-2">Role / Position</p>
+                <p class="text-sm text-gray-400">
+                    Brief description of your involvement and contributions.
+                </p>
+            </div>
+        </div>
+    </section>
+</Layout>

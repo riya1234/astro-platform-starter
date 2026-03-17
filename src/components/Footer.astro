@@ -2,8 +2,18 @@
 
 ---
 
-<footer class="pt-16 pb-12 sm:pt-24 sm:pb-16">
-    <p class="text-sm">
-        <a href="https://docs.netlify.com/frameworks/astro/" class="decoration-dashed text-primary underline-offset-8"> Astro on Netlify </a>
-    </p>
+<footer class="pt-12 pb-8 sm:pt-16 sm:pb-10 border-t border-surface-lighter">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <p class="text-sm text-muted">
+            &copy; {new Date().getFullYear()} Your Name. All rights reserved.
+        </p>
+        <div class="flex gap-4">
+            <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" class="text-sm text-muted hover:text-white transition-colors">
+                LinkedIn
+            </a>
+            <a href="mailto:your.email@ucla.edu" class="text-sm text-muted hover:text-white transition-colors">
+                Email
+            </a>
+        </div>
+    </div>
 </footer>
