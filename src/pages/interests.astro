@@ -5,21 +5,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Riya Hariyaplar | Skills & Achievements</title>
+    <title>Riya Hariyaplar | Interests</title>
     <meta name="robots" content="noindex, nofollow" />
 
     <style>
       :root {
         --bg: #f8fbff;
         --bg-soft: #eef5ff;
-        --card: rgba(255, 255, 255, 0.92);
-        --card-border: rgba(96, 165, 250, 0.18);
+        --card: rgba(255, 255, 255, 0.94);
+        --card-border: rgba(121, 170, 118, 0.22);
         --text: #122033;
         --muted: #4f6480;
         --accent: #2f6fed;
         --accent-2: #5c8df6;
-        --line: rgba(96, 165, 250, 0.2);
-        --shadow: 0 14px 40px rgba(37, 99, 235, 0.08);
+        --green: #6c9f5f;
+        --green-dark: #4f7e44;
+        --green-soft: #edf7e9;
+        --line: rgba(121, 170, 118, 0.24);
+        --shadow: 0 14px 40px rgba(65, 110, 70, 0.08);
       }
 
       * {
@@ -34,9 +37,9 @@
         margin: 0;
         font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         background:
-          radial-gradient(circle at top left, rgba(147, 197, 253, 0.3), transparent 30%),
-          radial-gradient(circle at top right, rgba(191, 219, 254, 0.45), transparent 28%),
-          linear-gradient(180deg, #ffffff 0%, #f8fbff 45%, #eef5ff 100%);
+          radial-gradient(circle at top left, rgba(174, 214, 164, 0.22), transparent 28%),
+          radial-gradient(circle at top right, rgba(191, 219, 254, 0.35), transparent 26%),
+          linear-gradient(180deg, #ffffff 0%, #f8fbff 45%, #eef8f0 100%);
         color: var(--text);
       }
 
@@ -55,8 +58,8 @@
         top: 0;
         z-index: 20;
         backdrop-filter: blur(14px);
-        background: rgba(255, 255, 255, 0.8);
-        border-bottom: 1px solid rgba(96, 165, 250, 0.12);
+        background: rgba(255, 255, 255, 0.82);
+        border-bottom: 1px solid rgba(121, 170, 118, 0.14);
       }
 
       .nav-inner {
@@ -90,13 +93,13 @@
       }
 
       .nav-links a:hover {
-        background: rgba(96, 165, 250, 0.12);
-        color: var(--accent);
+        background: rgba(121, 170, 118, 0.12);
+        color: var(--green-dark);
       }
 
       .nav-links a.active {
-        background: rgba(96, 165, 250, 0.14);
-        color: var(--accent);
+        background: rgba(121, 170, 118, 0.16);
+        color: var(--green-dark);
       }
 
       main {
@@ -109,7 +112,20 @@
         align-items: center;
         text-align: center;
         gap: 1rem;
-        margin-bottom: 2.75rem;
+        margin-bottom: 2.8rem;
+        position: relative;
+      }
+
+      .leaf-note {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.7rem 1rem;
+        border-radius: 999px;
+        background: rgba(121, 170, 118, 0.12);
+        color: var(--green-dark);
+        font-weight: 700;
+        font-size: 0.96rem;
       }
 
       h1 {
@@ -121,10 +137,10 @@
       }
 
       .page-subtitle {
-        max-width: 850px;
+        max-width: 860px;
         color: var(--muted);
         font-size: 1.08rem;
-        line-height: 1.8;
+        line-height: 1.9;
       }
 
       section {
@@ -152,209 +168,97 @@
         padding: 1.8rem;
       }
 
-      .stats-grid {
+      .interest-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: 1.2fr 0.8fr;
         gap: 1rem;
       }
 
-      .stat-card {
-        background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(238,245,255,0.92));
-        border: 1px solid rgba(96, 165, 250, 0.14);
-        border-radius: 24px;
-        padding: 1.4rem;
-        box-shadow: 0 10px 28px rgba(37, 99, 235, 0.06);
-      }
-
-      .stat-label {
-        font-size: 0.82rem;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--muted);
-        font-weight: 700;
-      }
-
-      .stat-value {
-        font-size: 3rem;
-        font-weight: 800;
-        line-height: 1;
-        margin-top: 1rem;
-        color: var(--accent);
-      }
-
-      .stat-note {
-        margin-top: 0.7rem;
-        color: var(--muted);
-        line-height: 1.6;
-        font-size: 0.95rem;
-      }
-
-      .soft-grid,
-      .testimonial-grid,
-      .cert-grid,
-      .achievement-grid {
+      .mini-grid {
         display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 1rem;
       }
 
-      .soft-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .soft-card,
-      .testimonial-card,
-      .cert-card,
-      .achievement-card {
-        background: rgba(255, 255, 255, 0.9);
-        border: 1px solid rgba(96, 165, 250, 0.14);
+      .feature-card,
+      .mini-card,
+      .reading-card {
+        background: rgba(255, 255, 255, 0.92);
+        border: 1px solid rgba(121, 170, 118, 0.16);
         border-radius: 22px;
-        box-shadow: 0 10px 28px rgba(37, 99, 235, 0.06);
-        padding: 1.4rem;
+        box-shadow: 0 10px 28px rgba(65, 110, 70, 0.06);
+        padding: 1.5rem;
       }
 
-      .soft-card h3,
-      .cert-card h3,
-      .achievement-card h3 {
-        margin: 0 0 0.55rem 0;
-        font-size: 1.15rem;
-        color: #17325c;
-      }
-
-      .soft-card p,
-      .cert-card p,
-      .achievement-card p {
-        margin: 0;
-        color: var(--muted);
-        line-height: 1.8;
-      }
-
-      .soft-icon,
-      .achievement-icon,
-      .cert-icon {
-        width: 52px;
-        height: 52px;
+      .feature-icon,
+      .mini-icon,
+      .reading-icon {
+        width: 54px;
+        height: 54px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
         border-radius: 18px;
-        background: rgba(96, 165, 250, 0.1);
-        color: var(--accent);
-        margin-bottom: 0.9rem;
+        background: rgba(121, 170, 118, 0.12);
+        color: var(--green-dark);
+        margin-bottom: 0.95rem;
       }
 
-      .testimonial-grid {
-        grid-template-columns: 1fr 1fr;
+      .feature-card h3,
+      .mini-card h3,
+      .reading-card h3 {
+        margin: 0 0 0.55rem 0;
+        font-size: 1.2rem;
+        color: #17325c;
       }
 
-      .testimonial-card {
-        position: relative;
-      }
-
-      .quote-mark {
-        font-size: 3rem;
-        line-height: 1;
-        color: rgba(47, 111, 237, 0.18);
-        position: absolute;
-        top: 0.7rem;
-        right: 1rem;
-        font-weight: 800;
-      }
-
-      .testimonial-text {
+      .feature-card p,
+      .mini-card p,
+      .reading-card p {
+        margin: 0;
         color: var(--muted);
         line-height: 1.9;
-        margin: 0 0 1rem 0;
-        padding-right: 1rem;
       }
 
-      .testimonial-name {
+      .soft-tag {
+        display: inline-flex;
+        margin-top: 1rem;
+        padding: 0.45rem 0.82rem;
+        border-radius: 999px;
+        background: var(--green-soft);
+        color: var(--green-dark);
         font-weight: 700;
-        color: #17325c;
+        font-size: 0.9rem;
       }
 
-      .testimonial-role {
-        color: var(--accent);
-        font-size: 0.96rem;
-        margin-top: 0.2rem;
-      }
-
-      .skill-bars {
-        display: grid;
-        gap: 1.15rem;
-      }
-
-      .skill-row {
-        display: grid;
-        grid-template-columns: 180px 1fr 64px;
+      .photo-link {
+        margin-top: 1rem;
+        display: inline-flex;
         align-items: center;
-        gap: 1rem;
-      }
-
-      .skill-name {
-        font-weight: 700;
-        color: #17325c;
-      }
-
-      .bar-track {
-        width: 100%;
-        height: 14px;
-        border-radius: 999px;
-        background: rgba(96, 165, 250, 0.12);
-        overflow: hidden;
-      }
-
-      .bar-fill {
-        height: 100%;
-        border-radius: 999px;
-        background: linear-gradient(135deg, #2f6fed, #60a5fa);
-      }
-
-      .bar-score {
-        color: var(--muted);
-        font-weight: 700;
-        text-align: right;
-      }
-
-      .cert-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .cert-card a,
-      .achievement-card a {
+        gap: 0.45rem;
         color: var(--accent);
+        font-weight: 700;
         text-decoration: underline;
       }
 
-      .achievement-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .achievement-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.4rem;
-        margin-top: 0.9rem;
-        padding: 0.45rem 0.8rem;
-        border-radius: 999px;
-        background: rgba(96, 165, 250, 0.1);
-        color: var(--accent);
-        font-size: 0.9rem;
-        font-weight: 700;
-      }
-
-      .speech-card {
-        padding: 1.7rem;
-      }
-
-      .speech-list {
-        margin: 1rem 0 0 0;
-        padding-left: 1.2rem;
+      .climate-note {
+        margin-top: 1rem;
+        padding: 1rem 1.1rem;
+        border-radius: 18px;
+        background: rgba(121, 170, 118, 0.08);
         color: var(--muted);
-        line-height: 1.9;
+        line-height: 1.85;
       }
 
-      .speech-list li + li {
-        margin-top: 0.45rem;
+      .bottom-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      }
+
+      .little-leaf {
+        color: var(--green);
+        margin: 0 0.25rem;
       }
 
       footer {
@@ -362,25 +266,14 @@
         padding: 1.5rem 0 2.5rem;
         color: var(--muted);
         text-align: center;
-        border-top: 1px solid rgba(96, 165, 250, 0.12);
+        border-top: 1px solid rgba(121, 170, 118, 0.14);
       }
 
-      @media (max-width: 980px) {
-        .stats-grid,
-        .soft-grid,
-        .testimonial-grid,
-        .cert-grid,
-        .achievement-grid {
-          grid-template-columns: 1fr 1fr;
-        }
-
-        .skill-row {
+      @media (max-width: 900px) {
+        .interest-grid,
+        .mini-grid,
+        .bottom-grid {
           grid-template-columns: 1fr;
-          gap: 0.5rem;
-        }
-
-        .bar-score {
-          text-align: left;
         }
       }
 
@@ -397,14 +290,6 @@
         .nav-links {
           justify-content: center;
         }
-
-        .stats-grid,
-        .soft-grid,
-        .testimonial-grid,
-        .cert-grid,
-        .achievement-grid {
-          grid-template-columns: 1fr;
-        }
       }
     </style>
   </head>
@@ -416,223 +301,137 @@
         <div class="nav-links">
           <a href="/">About</a>
           <a href="/resume">Resume</a>
-          <a href="/skills" class="active">Skills &amp; Achievements</a>
-          <a href="/interests">Interests</a>
+          <a href="/skills">Skills &amp; Achievements</a>
+          <a href="/interests" class="active">Interests</a>
         </div>
       </div>
     </nav>
 
     <main class="container">
       <div class="page-header">
-        <h1>Skills &amp; Achievements</h1>
+        <div class="leaf-note">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.63 3.84C14.54 2.94 10.98 3.3 8.2 5.09 4.73 7.31 3 11.19 3 15.48V21h5.52c4.29 0 8.17-1.73 10.39-5.2 1.79-2.78 2.15-6.34 1.25-9.43-.13-.47-.63-.74-1.1-.61-1.89.54-3.59 1.55-4.99 2.96-1.42 1.41-2.43 3.1-2.97 4.99a.79.79 0 0 1-1.52 0c-.54-1.89-1.55-3.58-2.96-4.99-.35-.35-.72-.68-1.11-.99.74-1.18 1.75-2.2 2.97-2.98 2.39-1.53 5.47-1.84 8.13-.95.42.14.87-.08 1.01-.5.15-.42-.08-.87-.49-1.01Z"/>
+          </svg>
+          How many hidden leaves did you find on this site?
+        </div>
+
+        <h1>Interests</h1>
+
         <div class="page-subtitle">
-          A snapshot of the strengths, recognitions, and technical depth that shape how I work — from cross-functional collaboration and ownership to data, product, and analytical execution.
+          Outside of academics and work, I’m drawn to the kinds of experiences that make life feel textured and grounded — being outdoors, noticing beauty, paying attention to color and detail, and caring deeply about sustainability, community, and the world around me.
         </div>
       </div>
 
       <section>
-        <div class="section-title">At a Glance</div>
+        <div class="section-title">Nature, Adventure &amp; Visual Storytelling</div>
         <div class="section-line"></div>
 
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-label">Years of Experience</div>
-            <div class="stat-value">4+</div>
-            <div class="stat-note">Across internships, project leadership, analytics, and product-focused work.</div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-label">Markets Worked Across</div>
-            <div class="stat-value">21</div>
-            <div class="stat-note">Cross-market thinking shaped by enterprise-scale demographic and data work.</div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-label">Teams Collaborated With</div>
-            <div class="stat-value">35+</div>
-            <div class="stat-note">Experience partnering with product, engineering, analytics, marketing, and strategy teams.</div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-label">Leadership / Awards</div>
-            <div class="stat-value">6+</div>
-            <div class="stat-note">Recognition spanning finance, academics, and competitive speech &amp; debate.</div>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div class="section-title">Soft Skills</div>
-        <div class="section-line"></div>
-
-        <div class="soft-grid">
-          <div class="soft-card">
-            <div class="soft-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.79 2.99-4S17.66 3 16 3s-3 1.79-3 4 1.34 4 3 4Zm-8 0c1.66 0 2.99-1.79 2.99-4S9.66 3 8 3 5 4.79 5 7s1.34 4 3 4Zm0 2c-2.33 0-7 1.17-7 3.5V20h14v-3.5C15 14.17 10.33 13 8 13Zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.96 1.97 3.45V20h6v-3.5c0-2.33-4.67-3.5-7-3.5Z"/></svg>
+        <div class="interest-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M14 6V4h-4v2H2v2h1l2.6 9.59A2 2 0 0 0 7.53 19H16v-2H7.53l-.27-1H17a2 2 0 0 0 1.92-1.45L21 8H6.21l-.32-1.14A2 2 0 0 0 3.97 5H2v1h12Zm-3 14a2 2 0 1 0 .001-3.999A2 2 0 0 0 11 20Zm6 0a2 2 0 1 0 .001-3.999A2 2 0 0 0 17 20Z"/>
+              </svg>
             </div>
-            <h3>Cross-Functional Communication</h3>
-            <p>I’m strongest when translating between technical and non-technical stakeholders, aligning teams around what matters, and keeping momentum clear across product, data, and strategy conversations.</p>
-          </div>
-
-          <div class="soft-card">
-            <div class="soft-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14 12.94c.04-.31.06-.63.06-.94s-.02-.63-.06-.94l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.03 7.03 0 0 0-1.63-.94l-.36-2.54A.5.5 0 0 0 13.9 2h-3.8a.5.5 0 0 0-.49.42l-.36 2.54c-.58.22-1.12.53-1.63.94l-2.39-.96a.5.5 0 0 0-.6.22L2.71 8.48a.5.5 0 0 0 .12.64l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94L2.83 14.16a.5.5 0 0 0-.12.64l1.92 3.32a.5.5 0 0 0 .6.22l2.39-.96c.51.41 1.05.72 1.63.94l.36 2.54a.5.5 0 0 0 .49.42h3.8a.5.5 0 0 0 .49-.42l.36-2.54c.58-.22 1.12-.53 1.63-.94l2.39.96a.5.5 0 0 0 .6-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58ZM12 15.5A3.5 3.5 0 1 1 12 8a3.5 3.5 0 0 1 0 7.5Z"/></svg>
-            </div>
-            <h3>Ownership &amp; Initiative</h3>
-            <p>I naturally look for gaps, build structure where needed, and take initiative beyond the base ask — especially in ambiguous settings where creating clarity is part of the work itself.</p>
-          </div>
-
-          <div class="soft-card">
-            <div class="soft-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 1 21h22L12 2Zm0 4.84L19.53 19H4.47L12 6.84ZM11 10v4h2v-4h-2Zm0 6v2h2v-2h-2Z"/></svg>
-            </div>
-            <h3>Analytical Judgment</h3>
-            <p>I like solving messy problems by finding the underlying signal — whether that’s through data, market context, user patterns, or a more strategic framing of the problem.</p>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div class="section-title">Testimonials</div>
-        <div class="section-line"></div>
-
-        <div class="testimonial-grid">
-          <div class="testimonial-card">
-            <div class="quote-mark">“</div>
-            <p class="testimonial-text">
-              Riya consistently brought a rare combination of initiative, structure, and thoughtful problem-solving. She was able to zoom out strategically while still staying grounded in execution, and she made cross-functional collaboration feel natural.
+            <h3>Camping &amp; National Parks</h3>
+            <p>
+              One of the ways I feel most present is being outdoors. I love camping, road-trip energy, and the feeling of seeing landscapes that completely shift your sense of scale. I’ve visited <strong>14 national parks</strong>, and that mix of adventure, curiosity, and appreciation for nature is a huge part of what energizes me.
             </p>
-            <div class="testimonial-name">Anuradha Siva</div>
-            <div class="testimonial-role">American Express</div>
+            <div class="soft-tag">14 National Parks</div>
           </div>
 
-          <div class="testimonial-card">
-            <div class="quote-mark">“</div>
-            <p class="testimonial-text">
-              What stands out most about Riya is her work ethic and coachability. She’s the kind of person who takes feedback seriously, elevates the people around her, and brings real energy to every project she touches.
-            </p>
-            <div class="testimonial-name">Brandon Mun</div>
-            <div class="testimonial-role">Colleague &amp; Mentor</div>
+          <div class="mini-grid">
+            <div class="mini-card">
+              <div class="mini-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M4 5h3l2-2h6l2 2h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm0-2.2A1.8 1.8 0 1 1 12 11a1.8 1.8 0 0 1 0 3.6Z"/>
+                </svg>
+              </div>
+              <h3>Photography</h3>
+              <p>
+                I love photography as a way of preserving mood, color, and small details that would otherwise get lost. It’s one of my favorite creative outlets.
+              </p>
+              <a class="photo-link" href="/photos">
+                View photo gallery
+              </a>
+            </div>
+
+            <div class="mini-card">
+              <div class="mini-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 2a7 7 0 0 0-7 7c0 4.25 7 13 7 13s7-8.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/>
+                </svg>
+              </div>
+              <h3>Places with Feeling</h3>
+              <p>
+                I’m always drawn to spaces that feel scenic, textured, vintage, or quietly beautiful, especially outdoorsy places with a little softness and character.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       <section>
-        <div class="section-title">Technical Skills Snapshot</div>
+        <div class="section-title">Sustainability &amp; Civic Climate Work</div>
         <div class="section-line"></div>
 
         <div class="card">
-          <div class="skill-bars">
-            <div class="skill-row">
-              <div class="skill-name">SQL</div>
-              <div class="bar-track"><div class="bar-fill" style="width: 92%;"></div></div>
-              <div class="bar-score">4.6 / 5</div>
-            </div>
+          <div class="feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.63 3.84C14.54 2.94 10.98 3.3 8.2 5.09 4.73 7.31 3 11.19 3 15.48V21h5.52c4.29 0 8.17-1.73 10.39-5.2 1.79-2.78 2.15-6.34 1.25-9.43-.13-.47-.63-.74-1.1-.61-1.89.54-3.59 1.55-4.99 2.96-1.42 1.41-2.43 3.1-2.97 4.99a.79.79 0 0 1-1.52 0c-.54-1.89-1.55-3.58-2.96-4.99-.35-.35-.72-.68-1.11-.99.74-1.18 1.75-2.2 2.97-2.98 2.39-1.53 5.47-1.84 8.13-.95.42.14.87-.08 1.01-.5.15-.42-.08-.87-.49-1.01Z"/>
+            </svg>
+          </div>
 
-            <div class="skill-row">
-              <div class="skill-name">Python</div>
-              <div class="bar-track"><div class="bar-fill" style="width: 88%;"></div></div>
-              <div class="bar-score">4.4 / 5</div>
-            </div>
+          <h3 style="margin: 0 0 0.6rem 0; color: #17325c;">Climate Advocacy, Policy, and Environmental Responsibility</h3>
 
-            <div class="skill-row">
-              <div class="skill-name">Product Strategy</div>
-              <div class="bar-track"><div class="bar-fill" style="width: 90%;"></div></div>
-              <div class="bar-score">4.5 / 5</div>
-            </div>
+          <p style="margin: 0; color: var(--muted); line-height: 1.9;">
+            Sustainability is not just an abstract interest for me, it is something I have actively engaged with through climate lobbying, policy conversations, and public writing. I’ve written <strong>[insert your number]</strong> letters to the editor focused on climate-related issues, and I’ve cared deeply about translating environmental urgency into real public action.
+          </p>
 
-            <div class="skill-row">
-              <div class="skill-name">Data Visualization</div>
-              <div class="bar-track"><div class="bar-fill" style="width: 84%;"></div></div>
-              <div class="bar-score">4.2 / 5</div>
-            </div>
+          <div class="climate-note">
+            I’ve also been interested in carbon dividend policy and broader climate legislation. The Energy Innovation and Carbon Dividend Act is a carbon-pricing bill designed to reduce carbon emissions while returning revenue to households, and Citizens’ Climate Lobby describes it as a bipartisan climate solution framework. I was especially interested in how policy advocacy connects public pressure, economic incentives, and real legislative progress. <a href="https://citizensclimatelobby.org/blog/policy/hr763-the-bipartisan-climate-change-solution/" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: underline;">Read an article on the Carbon Dividend bill</a>.
+          </div>
 
-            <div class="skill-row">
-              <div class="skill-name">Experimentation / A-B Testing</div>
-              <div class="bar-track"><div class="bar-fill" style="width: 80%;"></div></div>
-              <div class="bar-score">4.0 / 5</div>
-            </div>
+          <div class="climate-note">
+            I also worked with the team around <strong>Ro Khanna</strong>, the U.S. Representative for California’s 17th Congressional District, to better understand the intersection of climate policy, economics, and public communication. That experience deepened my interest in how environmentally conscious thinking can shape real-world systems and decisions.
           </div>
         </div>
       </section>
 
       <section>
-        <div class="section-title">Certifications</div>
+        <div class="section-title">Little Things I’m Into Right Now</div>
         <div class="section-line"></div>
 
-        <div class="cert-grid">
-          <div class="cert-card">
-            <div class="cert-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5a2 2 0 0 0-2 2v14l4-3h12a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Zm-8 9H7v-2h4v2Zm6-4H7V6h10v2Zm0 8H7v-2h10v2Z"/></svg>
+        <div class="bottom-grid">
+          <div class="reading-card">
+            <div class="reading-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M18 2H8a4 4 0 0 0-4 4v13a1 1 0 0 0 1.45.89C6.84 19.17 8.38 19 10 19h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2Zm0 15h-8c-1.39 0-2.74.18-4 .52V6a2 2 0 0 1 2-2h10v13Z"/>
+              </svg>
             </div>
-            <h3>Excel Skills for Business</h3>
-            <p>Coursera certification focused on spreadsheet modeling, data organization, practical analysis, and business-facing reporting workflows.</p>
+            <h3>Current Book</h3>
+            <p><strong>The Secret Lives of Color</strong> — I love anything that treats color and meaning like a story, especially when it blends aesthetics, history, and observation.</p>
           </div>
 
-          <div class="cert-card">
-            <div class="cert-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9l11 6 9-4.91V17h2V9L12 3Zm0 13L5.74 12.59 12 9.17l6.26 3.42L12 16Zm-7 1.27V21h14v-3.73l-7 3.82-7-3.82Z"/></svg>
+          <div class="reading-card">
+            <div class="reading-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 3a9 9 0 0 0-9 9v7a2 2 0 0 0 2 2h1v-8H5a7 7 0 1 1 14 0h-1v8h1a2 2 0 0 0 2-2v-7a9 9 0 0 0-9-9Zm-3 10h2v8H9v-8Zm4 0h2v8h-2v-8Z"/>
+              </svg>
             </div>
-            <h3>High-Dimensional Data Analysis</h3>
-            <p>HarvardX / edX coursework focused on modern statistical learning techniques, dimensionality challenges, and advanced data analysis methods.</p>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div class="section-title">Achievements</div>
-        <div class="section-line"></div>
-
-        <div class="achievement-grid">
-          <div class="achievement-card">
-            <div class="achievement-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17 3H7v2H3v3c0 2.97 2.16 5.43 5 5.91V16H6v2h12v-2h-2v-2.09c2.84-.48 5-2.94 5-5.91V5h-4V3Zm-9 8.82A3.01 3.01 0 0 1 5 8V7h3v4.82ZM19 8a3.01 3.01 0 0 1-3 3.82V7h3v1Z"/></svg>
-            </div>
-            <h3>Goldman Sachs Possibilities Summit Fellow</h3>
-            <p>
-              Selected for Goldman Sachs’ Possibilities program, a highly selective student opportunity centered on professional development, networking, and early exposure to the financial services industry.
-            </p>
-            <div class="achievement-badge">Finance / Early Talent Recognition</div>
-            <p style="margin-top: 0.9rem;">
-              <a href="https://www.goldmansachs.com/careers/students/programs-and-internships/americas/possibilities-series" target="_blank" rel="noopener noreferrer">
-                View official program
-              </a>
-            </p>
+            <h3>Current Podcast Interest</h3>
+            <p>I’ve been especially interested in podcasts around <strong>child developmental psychology</strong>, particularly ones that explore how early experiences shape emotion, attachment, learning, and long-term behavior.</p>
           </div>
 
-          <div class="achievement-card">
-            <div class="achievement-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v2H4V6Zm2 4h12v2H6v-2Zm-2 4h16v2H4v-2Zm2 4h12v2H6v-2Z"/></svg>
+          <div class="reading-card">
+            <div class="reading-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2a5 5 0 0 0-5 5c0 .73.16 1.42.43 2.05A6.98 6.98 0 0 0 4 15c0 3.87 3.13 7 7 7s7-3.13 7-7a6.98 6.98 0 0 0-3.43-5.95c.27-.63.43-1.32.43-2.05a5 5 0 0 0-5-5Zm0 2a3 3 0 0 1 3 3c0 .44-.09.86-.25 1.24A6.96 6.96 0 0 0 12 8a6.96 6.96 0 0 0-2.75.24A2.98 2.98 0 0 1 9 7a3 3 0 0 1 3-3Z"/>
+              </svg>
             </div>
-            <h3>Bruin Hedge Fund</h3>
-            <p>
-              Selected into Bruin Hedge Fund, a highly competitive UCLA investing organization known for its strong finance training and selective admissions process.
-            </p>
-            <div class="achievement-badge">4% Acceptance Rate</div>
-            <p style="margin-top: 0.9rem;">
-              <a href="https://www.bruinhedgefund.com/" target="_blank" rel="noopener noreferrer">
-                Visit Bruin Hedge Fund
-              </a>
-            </p>
-          </div>
-
-          <div class="achievement-card speech-card" style="grid-column: 1 / -1;">
-            <div class="achievement-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M3 5h18v10H7l-4 4V5Zm4 4v2h10V9H7Z"/></svg>
-            </div>
-            <h3>Speech &amp; Debate Recognition</h3>
-            <p>
-              A strong through-line in my background has been public speaking, argumentation, and communicating ideas with clarity under pressure. These achievements reflect both competitive excellence and the communication skills I bring into professional settings.
-            </p>
-
-            <ul class="speech-list">
-              <li>MLK Speech &amp; Debate Tournament — Finalist</li>
-              <li>SCU Cronin Dempsey Tournament — 2nd Place</li>
-              <li>Stanford Speech &amp; Debate Tournament — 7th Place Winner</li>
-              <li>UC Berkeley Speech &amp; Debate Tournament — Finalist</li>
-            </ul>
-
-            <div class="achievement-badge">Public Speaking • Persuasion • Executive Presence</div>
+            <h3>Favorite Dessert</h3>
+            <p><strong>Banana bread</strong> <span class="little-leaf">✿</span> warm, comforting, slightly nostalgic, and very hard to beat.</p>
           </div>
         </div>
       </section>
