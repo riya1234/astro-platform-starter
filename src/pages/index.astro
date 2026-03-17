@@ -20,6 +20,7 @@
         --accent-2: #5c8df6;
         --line: rgba(96, 165, 250, 0.2);
         --shadow: 0 14px 40px rgba(37, 99, 235, 0.08);
+        --leaf: #7aa36a;
       }
 
       * {
@@ -38,6 +39,7 @@
           radial-gradient(circle at top right, rgba(191, 219, 254, 0.45), transparent 28%),
           linear-gradient(180deg, #ffffff 0%, #f8fbff 45%, #eef5ff 100%);
         color: var(--text);
+        position: relative;
       }
 
       a {
@@ -101,11 +103,13 @@
 
       main {
         padding: 3.5rem 0 4rem;
+        position: relative;
       }
 
       .hero {
         text-align: center;
         padding: 2rem 0 2.5rem;
+        position: relative;
       }
 
       .avatar {
@@ -185,6 +189,7 @@
 
       section {
         margin-top: 4rem;
+        position: relative;
       }
 
       .section-title {
@@ -284,6 +289,32 @@
         color: var(--accent);
       }
 
+      .hidden-leaf {
+        position: absolute;
+        color: var(--leaf);
+        opacity: 0.42;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      .leaf-one {
+        top: 170px;
+        right: 80px;
+        transform: rotate(18deg);
+      }
+
+      .leaf-two {
+        top: 920px;
+        left: 24px;
+        transform: rotate(-14deg);
+      }
+
+      .leaf-three {
+        top: 1460px;
+        right: 34px;
+        transform: rotate(10deg);
+      }
+
       footer {
         margin-top: 4rem;
         padding: 1.5rem 0 2.5rem;
@@ -304,6 +335,18 @@
         .avatar {
           width: 190px;
           height: 190px;
+        }
+
+        .leaf-one {
+          right: 28px;
+        }
+
+        .leaf-two {
+          left: 10px;
+        }
+
+        .leaf-three {
+          right: 12px;
         }
       }
 
@@ -333,6 +376,10 @@
           font-size: 1rem;
           line-height: 1.8;
         }
+
+        .hidden-leaf {
+          display: none;
+        }
       }
     </style>
   </head>
@@ -351,6 +398,24 @@
     </nav>
 
     <main class="container">
+      <div class="hidden-leaf leaf-one" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.63 3.84C14.54 2.94 10.98 3.3 8.2 5.09 4.73 7.31 3 11.19 3 15.48V21h5.52c4.29 0 8.17-1.73 10.39-5.2 1.79-2.78 2.15-6.34 1.25-9.43-.13-.47-.63-.74-1.1-.61-1.89.54-3.59 1.55-4.99 2.96-1.42 1.41-2.43 3.1-2.97 4.99a.79.79 0 0 1-1.52 0c-.54-1.89-1.55-3.58-2.96-4.99-.35-.35-.72-.68-1.11-.99.74-1.18 1.75-2.2 2.97-2.98 2.39-1.53 5.47-1.84 8.13-.95.42.14.87-.08 1.01-.5.15-.42-.08-.87-.49-1.01Z"/>
+        </svg>
+      </div>
+
+      <div class="hidden-leaf leaf-two" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.63 3.84C14.54 2.94 10.98 3.3 8.2 5.09 4.73 7.31 3 11.19 3 15.48V21h5.52c4.29 0 8.17-1.73 10.39-5.2 1.79-2.78 2.15-6.34 1.25-9.43-.13-.47-.63-.74-1.1-.61-1.89.54-3.59 1.55-4.99 2.96-1.42 1.41-2.43 3.1-2.97 4.99a.79.79 0 0 1-1.52 0c-.54-1.89-1.55-3.58-2.96-4.99-.35-.35-.72-.68-1.11-.99.74-1.18 1.75-2.2 2.97-2.98 2.39-1.53 5.47-1.84 8.13-.95.42.14.87-.08 1.01-.5.15-.42-.08-.87-.49-1.01Z"/>
+        </svg>
+      </div>
+
+      <div class="hidden-leaf leaf-three" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.63 3.84C14.54 2.94 10.98 3.3 8.2 5.09 4.73 7.31 3 11.19 3 15.48V21h5.52c4.29 0 8.17-1.73 10.39-5.2 1.79-2.78 2.15-6.34 1.25-9.43-.13-.47-.63-.74-1.1-.61-1.89.54-3.59 1.55-4.99 2.96-1.42 1.41-2.43 3.1-2.97 4.99a.79.79 0 0 1-1.52 0c-.54-1.89-1.55-3.58-2.96-4.99-.35-.35-.72-.68-1.11-.99.74-1.18 1.75-2.2 2.97-2.98 2.39-1.53 5.47-1.84 8.13-.95.42.14.87-.08 1.01-.5.15-.42-.08-.87-.49-1.01Z"/>
+        </svg>
+      </div>
+
       <section class="hero">
         <img class="avatar" src="/headshotpic.png" alt="Riya Hariyaplar headshot" />
 
