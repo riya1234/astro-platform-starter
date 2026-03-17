@@ -20,6 +20,7 @@
         --accent-2: #5c8df6;
         --line: rgba(96, 165, 250, 0.2);
         --shadow: 0 14px 40px rgba(37, 99, 235, 0.08);
+        --leaf: #7aa36a;
       }
 
       * {
@@ -38,6 +39,7 @@
           radial-gradient(circle at top right, rgba(191, 219, 254, 0.45), transparent 28%),
           linear-gradient(180deg, #ffffff 0%, #f8fbff 45%, #eef5ff 100%);
         color: var(--text);
+        position: relative;
       }
 
       a {
@@ -101,6 +103,7 @@
 
       main {
         padding: 3.5rem 0 4rem;
+        position: relative;
       }
 
       .page-header {
@@ -110,6 +113,7 @@
         text-align: center;
         gap: 1.15rem;
         margin-bottom: 2.75rem;
+        position: relative;
       }
 
       .download-wrap {
@@ -145,12 +149,6 @@
         margin: 0;
         letter-spacing: -0.05em;
         color: #10213a;
-      }
-
-      .page-subtitle {
-        color: var(--muted);
-        font-size: 1.08rem;
-        margin-top: 0.1rem;
       }
 
       .contact-label-block {
@@ -306,6 +304,26 @@
         line-height: 1.8;
       }
 
+      .hidden-leaf {
+        position: absolute;
+        color: var(--leaf);
+        opacity: 0.42;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      .leaf-one {
+        top: 210px;
+        right: 130px;
+        transform: rotate(16deg);
+      }
+
+      .leaf-two {
+        top: 1180px;
+        left: 18px;
+        transform: rotate(-12deg);
+      }
+
       footer {
         margin-top: 4rem;
         padding: 1.5rem 0 2.5rem;
@@ -322,6 +340,14 @@
         .item-meta {
           text-align: left;
           min-width: auto;
+        }
+
+        .leaf-one {
+          right: 40px;
+        }
+
+        .leaf-two {
+          left: 10px;
         }
       }
 
@@ -344,6 +370,10 @@
           align-items: center;
           gap: 0.75rem;
         }
+
+        .hidden-leaf {
+          display: none;
+        }
       }
     </style>
   </head>
@@ -362,6 +392,18 @@
     </nav>
 
     <main class="container">
+      <div class="hidden-leaf leaf-one" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.63 3.84C14.54 2.94 10.98 3.3 8.2 5.09 4.73 7.31 3 11.19 3 15.48V21h5.52c4.29 0 8.17-1.73 10.39-5.2 1.79-2.78 2.15-6.34 1.25-9.43-.13-.47-.63-.74-1.1-.61-1.89.54-3.59 1.55-4.99 2.96-1.42 1.41-2.43 3.1-2.97 4.99a.79.79 0 0 1-1.52 0c-.54-1.89-1.55-3.58-2.96-4.99-.35-.35-.72-.68-1.11-.99.74-1.18 1.75-2.2 2.97-2.98 2.39-1.53 5.47-1.84 8.13-.95.42.14.87-.08 1.01-.5.15-.42-.08-.87-.49-1.01Z"/>
+        </svg>
+      </div>
+
+      <div class="hidden-leaf leaf-two" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.63 3.84C14.54 2.94 10.98 3.3 8.2 5.09 4.73 7.31 3 11.19 3 15.48V21h5.52c4.29 0 8.17-1.73 10.39-5.2 1.79-2.78 2.15-6.34 1.25-9.43-.13-.47-.63-.74-1.1-.61-1.89.54-3.59 1.55-4.99 2.96-1.42 1.41-2.43 3.1-2.97 4.99a.79.79 0 0 1-1.52 0c-.54-1.89-1.55-3.58-2.96-4.99-.35-.35-.72-.68-1.11-.99.74-1.18 1.75-2.2 2.97-2.98 2.39-1.53 5.47-1.84 8.13-.95.42.14.87-.08 1.01-.5.15-.42-.08-.87-.49-1.01Z"/>
+        </svg>
+      </div>
+
       <div class="page-header">
         <div class="download-wrap">
           <a class="btn btn-primary" href="/resume.pdf" download>
@@ -371,9 +413,6 @@
 
         <div>
           <h1>Riya’s Resume</h1>
-          <div class="page-subtitle">
-            Academic background, technical skills, and professional experience.
-          </div>
         </div>
 
         <div class="contact-label-block">Contact Info</div>
@@ -432,6 +471,125 @@
       </section>
 
       <section>
+        <div class="section-title">Work Experience</div>
+        <div class="section-line"></div>
+
+        <div class="stack">
+          <div class="resume-item">
+            <div class="item-top">
+              <div>
+                <div class="item-title">American Express, Product Management &amp; Data Science Intern</div>
+                <div class="item-subtitle">Summer 2025, Enterprise Digital Data Solutions Team</div>
+              </div>
+
+              <div class="item-meta">
+                <div>Jun 2025 to Aug 2025</div>
+                <div>New York, NY</div>
+              </div>
+            </div>
+
+            <ul class="resume-list">
+              <li>Collaborated with 35+ product managers and engineers across Consumer and Corporate units to align on migration goals and support adoption of a new enterprise-wide demographic data system, ensuring cross-team alignment and smoother rollout.</li>
+              <li>Created data architecture maps and supported migration pipelines, streamlining integration across conflicting schemas.</li>
+              <li>Defined data integrity roadmap by prioritizing fixes across 10,000+ inconsistencies, ensuring reliability of customer insights used for product and strategy decisions.</li>
+              <li>Unified demographic data across 21 markets, tailoring solutions to local regulatory frameworks to improve consistency.</li>
+              <li>Synthesized SQL and Excel-driven data quality analyses into executive dashboards, shaping leadership priorities on closing data gaps and improving reporting accuracy.</li>
+              <li>Optimized query performance and schema design, reducing runtime for high-volume demographic data pulls by 17%.</li>
+              <li>Designed playbooks and knowledge-sharing sessions that empowered cross-market teams to adopt new data tools.</li>
+            </ul>
+          </div>
+
+          <div class="resume-item">
+            <div class="item-top">
+              <div>
+                <div class="item-title">American Express, Founder of Project Local</div>
+                <div class="item-subtitle">Summer 2025, Beyond internship goals, I launched a new strategic initiative to strengthen AMEX’s vision</div>
+              </div>
+
+              <div class="item-meta">
+                <div>Jun 2025 to Aug 2025</div>
+                <div>New York, NY</div>
+              </div>
+            </div>
+
+            <ul class="resume-list">
+              <li>Identified an area of opportunity in Amex’s small business strategy and created Project Local to boost merchant loyalty.</li>
+              <li>Presented to Amex’s CMO, CTO, EVPs, and SVPs, securing executive buy-in by making a compelling case for its impact.</li>
+              <li>Collaborated with 8 cross-functional teams (marketing, product, design, analytics, risk, etc.) to co-develop program features, pressure-test implementation approaches, and iterate on feedback to refine the program design.</li>
+              <li>Transformed insights from 25+ merchant workshops into user-centered product requirements, ensuring that pilot design directly addressed merchant pain points and loyalty drivers.</li>
+              <li>Visualized customer journeys through Figma prototypes and persuasive storytelling, illustrating cardmember value.</li>
+              <li>Designed a resource-efficient rollout plan by outlining integration pathways and conducting feasibility studies, leveraging existing Amex infrastructure and frameworks.</li>
+              <li>Modeled program impact using historical merchant data, forecasting a 15% lift in loyalty-driven revenue.</li>
+            </ul>
+          </div>
+
+          <div class="resume-item">
+            <div class="item-top">
+              <div>
+                <div class="item-title">Apical Apps, Data Science and Product Analytics Intern</div>
+                <div class="item-subtitle">Summer 2024, Cloud Solutions Team</div>
+              </div>
+
+              <div class="item-meta">
+                <div>May 2024 to Sept 2024</div>
+                <div>San Jose, CA</div>
+              </div>
+            </div>
+
+            <ul class="resume-list">
+              <li>Optimized data architecture and designed 4 MySQL schemas, cutting query times and accelerating analytics workflows.</li>
+              <li>Partnered with clients to translate business needs into a prioritized product roadmap, aligning engineering resources to maximize user adoption and measurable business impact.</li>
+              <li>Partnered with engineering teams to build and launch a digital product, achieving a 12% increase in adoption.</li>
+              <li>Utilized Python and SQL to perform data manipulation and aggregation tasks, enabling insightful decision-making.</li>
+              <li>Leveraged agile methodologies to manage product backlogs, ensuring the timely release of new features.</li>
+            </ul>
+          </div>
+
+          <div class="resume-item">
+            <div class="item-top">
+              <div>
+                <div class="item-title">Opal AI, Product Development and Research Intern</div>
+                <div class="item-subtitle">Spring 2024, Growth &amp; Product Analytics Team</div>
+              </div>
+
+              <div class="item-meta">
+                <div>Mar 2024 to May 2024</div>
+                <div>Los Angeles, CA</div>
+              </div>
+            </div>
+
+            <ul class="resume-list">
+              <li>Translated complex data into 10+ stakeholder-facing dashboards, driving product decisions and roadmap prioritization.</li>
+              <li>Developed and shipped a new product feature utilizing SQL and user behavior data, increasing user engagement by 15%.</li>
+              <li>Executed A/B tests on new features, optimizing conversion rates and driving product adoption.</li>
+              <li>Customized technology solutions through detailed competitive analysis of 12+ companies, increasing profit by 3%.</li>
+              <li>Provided strategic insights for managing $200,000 in Google Cloud credits, aligning them with product goals.</li>
+            </ul>
+          </div>
+
+          <div class="resume-item">
+            <div class="item-top">
+              <div>
+                <div class="item-title">Engineers without Borders (Chicken Farm in Nepal), Project Lead</div>
+                <div class="item-subtitle">Winter 2024, Sustainable Chicken Farm in rural Nepal</div>
+              </div>
+
+              <div class="item-meta">
+                <div>Jan 2024 to Mar 2024</div>
+                <div>Los Angeles, CA</div>
+              </div>
+            </div>
+
+            <ul class="resume-list">
+              <li>Led the creation of a sustainable chicken farm in Nepal to boost local food security and economic resilience.</li>
+              <li>Partnered with Nepalese farmers and UCLA researchers to co-design solutions, integrating dual perspectives to achieve goals.</li>
+              <li>Analyzed feed efficiency, crop yields, and irrigation data to recommend efficient practices under limited data conditions.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
         <div class="section-title">Technical Skills</div>
         <div class="section-line"></div>
 
@@ -459,125 +617,6 @@
           <div class="skill-block">
             <h3>Product</h3>
             <p>Jira, Confluence, SCRUM, Agile, Adobe Creative Cloud, Figma (Prototyping &amp; Wireframing), CRM</p>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div class="section-title">Work Experience</div>
-        <div class="section-line"></div>
-
-        <div class="stack">
-          <div class="resume-item">
-            <div class="item-top">
-              <div>
-                <div class="item-title">American Express — Product Management &amp; Data Science Intern</div>
-                <div class="item-subtitle">Summer 2025 – Enterprise Digital Data Solutions Team</div>
-              </div>
-
-              <div class="item-meta">
-                <div>Jun 2025 – Aug 2025</div>
-                <div>New York, NY</div>
-              </div>
-            </div>
-
-            <ul class="resume-list">
-              <li>Collaborated with 35+ product managers and engineers across Consumer and Corporate units to align on migration goals and support adoption of a new enterprise-wide demographic data system, ensuring cross-team alignment and smoother rollout.</li>
-              <li>Created data architecture maps and supported migration pipelines, streamlining integration across conflicting schemas.</li>
-              <li>Defined data integrity roadmap by prioritizing fixes across 10,000+ inconsistencies, ensuring reliability of customer insights used for product and strategy decisions.</li>
-              <li>Unified demographic data across 21 markets, tailoring solutions to local regulatory frameworks to improve consistency.</li>
-              <li>Synthesized SQL and Excel-driven data quality analyses into executive dashboards, shaping leadership priorities on closing data gaps and improving reporting accuracy.</li>
-              <li>Optimized query performance and schema design, reducing runtime for high-volume demographic data pulls by 17%.</li>
-              <li>Designed playbooks and knowledge-sharing sessions that empowered cross-market teams to adopt new data tools.</li>
-            </ul>
-          </div>
-
-          <div class="resume-item">
-            <div class="item-top">
-              <div>
-                <div class="item-title">American Express — Founder of Project Local</div>
-                <div class="item-subtitle">Summer 2025 – Beyond internship goals, I launched a new strategic initiative to strengthen AMEX’s vision</div>
-              </div>
-
-              <div class="item-meta">
-                <div>Jun 2025 – Aug 2025</div>
-                <div>New York, NY</div>
-              </div>
-            </div>
-
-            <ul class="resume-list">
-              <li>Identified an area of opportunity in Amex’s small business strategy and created Project Local to boost merchant loyalty.</li>
-              <li>Presented to Amex’s CMO, CTO, EVPs, and SVPs, securing executive buy-in by making a compelling case for its impact.</li>
-              <li>Collaborated with 8 cross-functional teams (marketing, product, design, analytics, risk, etc.) to co-develop program features, pressure-test implementation approaches, and iterate on feedback to refine the program design.</li>
-              <li>Transformed insights from 25+ merchant workshops into user-centered product requirements, ensuring that pilot design directly addressed merchant pain points and loyalty drivers.</li>
-              <li>Visualized customer journeys through Figma prototypes and persuasive storytelling, illustrating cardmember value.</li>
-              <li>Designed a resource-efficient rollout plan by outlining integration pathways and conducting feasibility studies, leveraging existing Amex infrastructure and frameworks.</li>
-              <li>Modeled program impact using historical merchant data, forecasting a 15% lift in loyalty-driven revenue.</li>
-            </ul>
-          </div>
-
-          <div class="resume-item">
-            <div class="item-top">
-              <div>
-                <div class="item-title">Apical Apps — Data Science and Product Analytics Intern</div>
-                <div class="item-subtitle">Summer 2024 - Cloud Solutions Team</div>
-              </div>
-
-              <div class="item-meta">
-                <div>May 2024 – Sept 2024</div>
-                <div>San Jose, CA</div>
-              </div>
-            </div>
-
-            <ul class="resume-list">
-              <li>Optimized data architecture and designed 4 MySQL schemas, cutting query times and accelerating analytics workflows.</li>
-              <li>Partnered with clients to translate business needs into a prioritized product roadmap, aligning engineering resources to maximize user adoption and measurable business impact.</li>
-              <li>Partnered with engineering teams to build and launch a digital product, achieving a 12% increase in adoption.</li>
-              <li>Utilized Python and SQL to perform data manipulation and aggregation tasks, enabling insightful decision-making.</li>
-              <li>Leveraged agile methodologies to manage product backlogs, ensuring the timely release of new features.</li>
-            </ul>
-          </div>
-
-          <div class="resume-item">
-            <div class="item-top">
-              <div>
-                <div class="item-title">Opal AI — Product Development and Research Intern</div>
-                <div class="item-subtitle">Spring 2024 - Growth &amp; Product Analytics Team</div>
-              </div>
-
-              <div class="item-meta">
-                <div>Mar 2024 – May 2024</div>
-                <div>Los Angeles, CA</div>
-              </div>
-            </div>
-
-            <ul class="resume-list">
-              <li>Translated complex data into 10+ stakeholder-facing dashboards, driving product decisions and roadmap prioritization.</li>
-              <li>Developed and shipped a new product feature utilizing SQL and user behavior data, increasing user engagement by 15%.</li>
-              <li>Executed A/B tests on new features, optimizing conversion rates and driving product adoption.</li>
-              <li>Customized technology solutions through detailed competitive analysis of 12+ companies, increasing profit by 3%.</li>
-              <li>Provided strategic insights for managing $200,000 in Google Cloud credits, aligning them with product goals.</li>
-            </ul>
-          </div>
-
-          <div class="resume-item">
-            <div class="item-top">
-              <div>
-                <div class="item-title">Engineers without Borders (Chicken Farm in Nepal) — Project Lead</div>
-                <div class="item-subtitle">Winter 2024 - Sustainable Chicken Farm in rural Nepal</div>
-              </div>
-
-              <div class="item-meta">
-                <div>Jan 2024 – Mar 2024</div>
-                <div>Los Angeles, CA</div>
-              </div>
-            </div>
-
-            <ul class="resume-list">
-              <li>Led the creation of a sustainable chicken farm in Nepal to boost local food security and economic resilience.</li>
-              <li>Partnered with Nepalese farmers and UCLA researchers to co-design solutions, integrating dual perspectives to achieve goals.</li>
-              <li>Analyzed feed efficiency, crop yields, and irrigation data to recommend efficient practices under limited data conditions.</li>
-            </ul>
           </div>
         </div>
       </section>
