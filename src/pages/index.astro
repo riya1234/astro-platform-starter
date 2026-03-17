@@ -1,19 +1,103 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Markdown from '../components/Markdown.astro';
-
-const explainer = `
-An Astro website can go way beyond static pages - on the right platform.
-
-Netlify supports not only [Streaming SSR](https://docs.astro.build/en/guides/server-side-rendering/#html-streaming) and fast [Edge Middleware](https://docs.astro.build/en/guides/middleware/), but also [on-demand revalidation](https://www.netlify.com/blog/cache-tags-and-purge-api-on-netlify/) and [stale-while-revalidate](https://www.netlify.com/blog/swr-and-fine-grained-cache-control/). 
-Any page or data can be rebuilt only when needed, without site visitors ever getting a performance hit.
-`;
 ---
 
-<Layout title="Welcome to Astro.">
-    <h1 class="mb-10">Netlify Platform Starter for Astro</h1>
-    <Markdown content={explainer} class="mb-10 text-lg" />
-    <p>
-        <a href="https://docs.netlify.com/frameworks/astro/" class="btn btn-lg sm:min-w-64">Read the Docs</a>
-    </p>
+<Layout title="Your Name — About" activeNav="/">
+    <!-- Hero Section -->
+    <section class="mb-16">
+        <div class="flex flex-col md:flex-row gap-8 items-start">
+            <div class="flex-1">
+                <p class="text-primary-light font-medium mb-2">Hello, I'm</p>
+                <h1 class="mb-4">Your Name</h1>
+                <p class="text-xl text-gray-300 mb-6">
+                    UCLA student studying Data Science with a focus in Economics
+                </p>
+                <p class="text-gray-400 leading-relaxed mb-8">
+                    <!-- Replace with your own bio -->
+                    I'm a data-driven thinker with a passion for understanding how economies work
+                    and how quantitative methods can inform better decisions. Currently pursuing
+                    my degree at UCLA, I combine analytical rigor with a keen interest in
+                    economic research, policy analysis, and real-world problem solving.
+                </p>
+                <div class="flex flex-wrap gap-3">
+                    <a href="/resume" class="btn">View Resume</a>
+                    <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                        LinkedIn
+                    </a>
+                </div>
+            </div>
+            <!-- Optional: Add a headshot image here -->
+            <!-- <div class="w-48 h-48 rounded-full bg-surface-lighter flex items-center justify-center text-muted">
+                <img src="/images/headshot.jpg" alt="Your Name" class="w-full h-full rounded-full object-cover" />
+            </div> -->
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="mb-16">
+        <h2 class="section-heading">Education</h2>
+        <div class="card">
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
+                <div>
+                    <h3 class="text-lg">University of California, Los Angeles (UCLA)</h3>
+                    <p class="text-primary-light font-medium">B.S. in Data Science</p>
+                    <!-- Update with your specific concentration/minor if applicable -->
+                    <p class="text-gray-400 text-sm">Concentration in Economics</p>
+                </div>
+                <div class="text-sm text-muted whitespace-nowrap">
+                    <!-- Update with your graduation year -->
+                    Expected Graduation: June 2026
+                </div>
+            </div>
+            <div class="mt-4">
+                <p class="text-sm text-gray-400">
+                    <!-- Add relevant coursework, GPA, honors, etc. -->
+                    <span class="text-gray-300 font-medium">Relevant Coursework:</span>
+                    Econometrics, Statistical Modeling, Data Analysis, Microeconomic Theory,
+                    Machine Learning, Probability & Statistics, Database Systems
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="mb-16">
+        <h2 class="section-heading">Get in Touch</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="card flex items-center gap-4">
+                <div class="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center text-primary-light flex-shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                </div>
+                <div>
+                    <p class="text-sm text-muted">Email</p>
+                    <a href="mailto:your.email@ucla.edu" class="text-sm text-white">your.email@ucla.edu</a>
+                </div>
+            </div>
+            <div class="card flex items-center gap-4">
+                <div class="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center text-primary-light flex-shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </div>
+                <div>
+                    <p class="text-sm text-muted">LinkedIn</p>
+                    <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" class="text-sm text-white">linkedin.com/in/your-profile</a>
+                </div>
+            </div>
+            <div class="card flex items-center gap-4">
+                <div class="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center text-primary-light flex-shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                </div>
+                <div>
+                    <p class="text-sm text-muted">Location</p>
+                    <p class="text-sm text-white">Los Angeles, CA</p>
+                </div>
+            </div>
+        </div>
+    </section>
 </Layout>

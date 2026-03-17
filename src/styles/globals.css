@@ -2,77 +2,72 @@
 
 @theme {
     --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-    --color-primary: #f67280;
-    --color-primary-content: #101828;
-    --color-complementary: #355c7d;
-    --background-image-noise: linear-gradient(
-            to bottom,
-            color-mix(in oklab, var(--color-gray-950) 0%, transparent),
-            color-mix(in oklab, var(--color-gray-950) 100%, transparent)
-        ),
-        url('/images/noise.png');
+    --color-primary: #6366f1;
+    --color-primary-light: #818cf8;
+    --color-primary-content: #ffffff;
+    --color-surface: #1e1b2e;
+    --color-surface-light: #2a2740;
+    --color-surface-lighter: #363352;
+    --color-muted: #9ca3af;
+    --color-accent: #a78bfa;
 }
 
 @layer base {
+    body {
+        @apply bg-surface text-gray-200 antialiased;
+    }
+
     h1 {
-        @apply text-4xl font-bold tracking-tight sm:text-5xl;
+        @apply text-4xl font-bold tracking-tight sm:text-5xl text-white;
     }
 
     h2 {
-        @apply text-2xl font-bold sm:text-3xl;
+        @apply text-2xl font-bold sm:text-3xl text-white;
     }
 
-    a:not(.btn) {
-        @apply underline transition hover:opacity-80;
+    h3 {
+        @apply text-xl font-semibold text-white;
     }
 
-    pre {
-        @apply p-6 overflow-x-auto rounded-lg;
-    }
-
-    :not(pre) > code {
-        @apply px-1 py-0.5 font-mono rounded bg-gray-900 text-primary;
-        font-size: 0.9em;
+    a:not(.btn):not(.nav-link) {
+        @apply text-primary-light underline underline-offset-2 transition hover:text-accent;
     }
 }
 
 @layer components {
-    .markdown {
-        > * {
-            @apply my-6;
-        }
+    .nav-link {
+        @apply inline-block px-3 py-2 text-sm font-medium text-gray-300 no-underline rounded-md transition-colors hover:text-white hover:bg-surface-lighter;
+    }
 
-        :where(h1, h2) {
-            @apply mt-12 mb-6;
-        }
-
-        > :first-child {
-            @apply mt-0;
-        }
-
-        > :last-child {
-            @apply mb-0;
-        }
+    .nav-link-active {
+        @apply text-white bg-surface-lighter;
     }
 
     .btn {
-        @apply inline-flex items-center justify-center gap-2 bg-primary text-primary-content cursor-pointer text-center font-semibold no-underline transition-colors;
-        padding: var(--btn-py, 0.875rem) var(--btn-px, 1.25rem);
-        font-size: var(--btn-font-size, 0.875rem);
-        border-radius: var(--btn-border-radius, 0.25rem);
+        @apply inline-flex items-center justify-center gap-2 bg-primary text-primary-content cursor-pointer text-center font-semibold no-underline rounded-lg transition-colors px-6 py-3 text-sm;
 
         &:hover {
-            @apply bg-primary/85;
-        }
-
-        &:disabled {
-            @apply text-gray-400 bg-gray-700;
+            @apply bg-primary-light;
         }
     }
 
-    .btn-lg {
-        --btn-font-size: 1.125rem;
-        --btn-px: 1.5rem;
-        --btn-py: 1.125rem;
+    .btn-outline {
+        @apply bg-transparent border border-primary text-primary-light;
+
+        &:hover {
+            @apply bg-primary text-primary-content;
+        }
+    }
+
+    .card {
+        @apply bg-surface-light border border-surface-lighter rounded-xl p-6;
+    }
+
+    .section-heading {
+        @apply text-2xl font-bold text-white mb-6 pb-2 border-b border-surface-lighter;
+    }
+
+    .tag {
+        @apply inline-block px-3 py-1 text-xs font-medium rounded-full bg-surface-lighter text-gray-300;
     }
 }
