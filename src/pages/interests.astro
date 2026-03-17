@@ -10,100 +10,286 @@
 
     <style>
       :root {
+        --bg: #f8fbff;
+        --bg-soft: #eef5ff;
+        --card: rgba(255, 255, 255, 0.94);
+        --card-border: rgba(121, 170, 118, 0.22);
         --text: #122033;
         --muted: #4f6480;
-        --accent: #2f6fed; /* BLUE */
+        --accent: #2f6fed;
+        --accent-2: #5c8df6;
         --green: #6c9f5f;
+        --green-dark: #4f7e44;
+        --green-soft: #edf7e9;
+        --line: rgba(121, 170, 118, 0.24);
+        --shadow: 0 14px 40px rgba(65, 110, 70, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
       }
 
       body {
         margin: 0;
-        font-family: Inter, system-ui, sans-serif;
-        background: linear-gradient(180deg, #ffffff 0%, #eef8f0 100%);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(174, 214, 164, 0.22), transparent 28%),
+          radial-gradient(circle at top right, rgba(191, 219, 254, 0.35), transparent 26%),
+          linear-gradient(180deg, #ffffff 0%, #f8fbff 45%, #eef8f0 100%);
         color: var(--text);
       }
 
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
       .container {
-        width: min(1100px, 92%);
-        margin: auto;
+        width: min(1120px, calc(100% - 2rem));
+        margin: 0 auto;
       }
 
       nav {
-        background: white;
-        padding: 1rem 0;
-        border-bottom: 1px solid #e5eaf3;
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(14px);
+        background: rgba(255, 255, 255, 0.82);
+        border-bottom: 1px solid rgba(121, 170, 118, 0.14);
       }
 
       .nav-inner {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding: 1.1rem 0;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .brand {
+        font-size: 1.8rem;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        color: #17325c;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
       }
 
       .nav-links a {
-        margin-left: 1rem;
-        text-decoration: none;
         color: var(--muted);
-        font-weight: 600;
+        padding: 0.7rem 1rem;
+        border-radius: 999px;
         transition: 0.2s ease;
+        font-weight: 600;
       }
 
-      /* 🔵 Hover = BLUE */
       .nav-links a:hover {
-        color: var(--accent);
+        background: rgba(121, 170, 118, 0.12);
+        color: var(--green-dark);
       }
 
-      /* 🟢 Active tab */
-      .nav-links .active {
-        color: var(--green);
+      .nav-links a.active {
+        background: rgba(121, 170, 118, 0.16);
+        color: var(--green-dark);
       }
 
-      /* 🛑 Keep active green even on hover */
-      .nav-links .active:hover {
-        color: var(--green);
+      main {
+        padding: 3.5rem 0 4rem;
+      }
+
+      .page-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+        margin-bottom: 2.8rem;
+        position: relative;
+      }
+
+      .leaf-note {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.7rem 1rem;
+        border-radius: 999px;
+        background: rgba(121, 170, 118, 0.12);
+        color: var(--green-dark);
+        font-weight: 700;
+        font-size: 0.96rem;
       }
 
       h1 {
-        text-align: center;
-        font-size: 3.5rem;
-        margin-top: 2rem;
+        font-size: clamp(2.8rem, 6vw, 4.4rem);
+        line-height: 1.02;
+        margin: 0;
+        letter-spacing: -0.05em;
+        color: #10213a;
       }
 
-      .subtitle {
-        text-align: center;
-        max-width: 700px;
-        margin: auto;
+      .page-subtitle {
+        max-width: 860px;
         color: var(--muted);
+        font-size: 1.08rem;
+        line-height: 1.9;
       }
 
       section {
-        margin-top: 3rem;
+        margin-top: 3.5rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+        margin-bottom: 0.75rem;
+        color: #17325c;
+      }
+
+      .section-line {
+        height: 1px;
+        width: 100%;
+        background: var(--line);
+        margin-bottom: 1.5rem;
       }
 
       .card {
-        background: white;
-        padding: 1.5rem;
-        border-radius: 16px;
-        border: 1px solid #e5eaf3;
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        border-radius: 24px;
+        box-shadow: var(--shadow);
+        padding: 1.8rem;
       }
 
-      .grid {
+      .interest-grid {
         display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
         gap: 1rem;
       }
 
-      .two {
-        grid-template-columns: 2fr 1fr;
+      .mini-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
       }
 
-      .bottom {
+      .feature-card,
+      .mini-card,
+      .reading-card {
+        background: rgba(255, 255, 255, 0.92);
+        border: 1px solid rgba(121, 170, 118, 0.16);
+        border-radius: 22px;
+        box-shadow: 0 10px 28px rgba(65, 110, 70, 0.06);
+        padding: 1.5rem;
+      }
+
+      .feature-icon,
+      .mini-icon,
+      .reading-icon {
+        width: 54px;
+        height: 54px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 18px;
+        background: rgba(121, 170, 118, 0.12);
+        color: var(--green-dark);
+        margin-bottom: 0.95rem;
+      }
+
+      .feature-card h3,
+      .mini-card h3,
+      .reading-card h3 {
+        margin: 0 0 0.55rem 0;
+        font-size: 1.2rem;
+        color: #17325c;
+      }
+
+      .feature-card p,
+      .mini-card p,
+      .reading-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.9;
+      }
+
+      .soft-tag {
+        display: inline-flex;
+        margin-top: 1rem;
+        padding: 0.45rem 0.82rem;
+        border-radius: 999px;
+        background: var(--green-soft);
+        color: var(--green-dark);
+        font-weight: 700;
+        font-size: 0.9rem;
+      }
+
+      .photo-link {
+        margin-top: 1rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        color: var(--accent);
+        font-weight: 700;
+        text-decoration: underline;
+      }
+
+      .climate-note {
+        margin-top: 1rem;
+        padding: 1rem 1.1rem;
+        border-radius: 18px;
+        background: rgba(121, 170, 118, 0.08);
+        color: var(--muted);
+        line-height: 1.85;
+      }
+
+      .bottom-grid {
+        display: grid;
         grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      }
+
+      .little-leaf {
+        color: var(--green);
+        margin: 0 0.25rem;
       }
 
       footer {
-        text-align: center;
-        margin-top: 3rem;
+        margin-top: 4rem;
+        padding: 1.5rem 0 2.5rem;
         color: var(--muted);
+        text-align: center;
+        border-top: 1px solid rgba(121, 170, 118, 0.14);
+      }
+
+      @media (max-width: 900px) {
+        .interest-grid,
+        .mini-grid,
+        .bottom-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .nav-inner {
+          justify-content: center;
+        }
+
+        .brand {
+          width: 100%;
+          text-align: center;
+        }
+
+        .nav-links {
+          justify-content: center;
+        }
       }
     </style>
   </head>
@@ -111,84 +297,148 @@
   <body>
     <nav>
       <div class="container nav-inner">
-        <div><strong>Riya Hariyaplar</strong></div>
+        <div class="brand">Riya Hariyaplar</div>
         <div class="nav-links">
           <a href="/">About</a>
           <a href="/resume">Resume</a>
-          <a href="/skills">Skills</a>
+          <a href="/skills">Skills &amp; Achievements</a>
           <a href="/interests" class="active">Interests</a>
         </div>
       </div>
     </nav>
 
     <main class="container">
-      <h1>Interests</h1>
-
-      <p class="subtitle">
-        🌿 How many hidden leaves did you find on this site?
-      </p>
-
-      <!-- MAIN SECTION -->
-      <section class="grid two">
-        <div class="card">
-          <h3>Camping & National Parks</h3>
-          <p>
-            I love being outdoors and exploring nature. I have been to 14 national parks and love camping, road trips, and scenic environments.
-          </p>
+      <div class="page-header">
+        <div class="leaf-note">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.63 3.84C14.54 2.94 10.98 3.3 8.2 5.09 4.73 7.31 3 11.19 3 15.48V21h5.52c4.29 0 8.17-1.73 10.39-5.2 1.79-2.78 2.15-6.34 1.25-9.43-.13-.47-.63-.74-1.1-.61-1.89.54-3.59 1.55-4.99 2.96-1.42 1.41-2.43 3.1-2.97 4.99a.79.79 0 0 1-1.52 0c-.54-1.89-1.55-3.58-2.96-4.99-.35-.35-.72-.68-1.11-.99.74-1.18 1.75-2.2 2.97-2.98 2.39-1.53 5.47-1.84 8.13-.95.42.14.87-.08 1.01-.5.15-.42-.08-.87-.49-1.01Z"/>
+          </svg>
+          How many hidden leaves did you find on this website? Also can you guess my favorite color? 
         </div>
 
-        <div class="card">
-          <h3>Photography</h3>
-          <p>
-            Photography is one of my favorite creative outlets. I love capturing moments, textures, and colors.
-          </p>
-          <a href="/photos">📷 View my photo gallery</a>
-        </div>
-      </section>
+        <h1>Interests</h1>
 
-      <!-- SUSTAINABILITY -->
+        <div class="page-subtitle">
+          Outside of academics and work, I’m drawn to the kinds of experiences that make life feel textured and grounded. I love being outdoors, noticing beauty, paying attention to color and detail, and caring deeply about sustainability, community, and the world around me.
+        </div>
+      </div>
+
       <section>
-        <div class="card">
-          <h3>Sustainability & Climate Advocacy</h3>
-          <p>
-            I am passionate about sustainability and climate policy. I have written [insert number] letters to the editor on climate-related topics and have been involved in advocacy efforts around carbon policy.
-          </p>
+        <div class="section-title">Nature, Adventure &amp; Visual Storytelling</div>
+        <div class="section-line"></div>
 
-          <p>
-            I worked with the team around Ro Khanna, a U.S. Representative, to better understand climate legislation and policy impact.
-          </p>
+        <div class="interest-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M14 6V4h-4v2H2v2h1l2.6 9.59A2 2 0 0 0 7.53 19H16v-2H7.53l-.27-1H17a2 2 0 0 0 1.92-1.45L21 8H6.21l-.32-1.14A2 2 0 0 0 3.97 5H2v1h12Zm-3 14a2 2 0 1 0 .001-3.999A2 2 0 0 0 11 20Zm6 0a2 2 0 1 0 .001-3.999A2 2 0 0 0 17 20Z"/>
+              </svg>
+            </div>
+            <h3>Camping &amp; National Parks</h3>
+            <p>
+              One of the ways I feel most present is being outdoors. I love camping, road-trip energy, and the feeling of seeing landscapes that completely shift your sense of scale. I’ve visited <strong>14 national parks</strong>, and that mix of adventure, curiosity, and appreciation for nature is a huge part of what energizes me.
+            </p>
+            <div class="soft-tag">14 National Parks</div>
+          </div>
 
-          <p>
-            <a href="https://citizensclimatelobby.org/blog/policy/hr763-the-bipartisan-climate-change-solution/" target="_blank">
-              Read about the Carbon Dividend bill
-            </a>
-          </p>
+          <div class="mini-grid">
+            <div class="mini-card">
+              <div class="mini-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M4 5h3l2-2h6l2 2h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm0-2.2A1.8 1.8 0 1 1 12 11a1.8 1.8 0 0 1 0 3.6Z"/>
+                </svg>
+              </div>
+              <h3>Photography</h3>
+              <p>
+                I love photography as a way of preserving mood, color, and small details that would otherwise get lost. It’s one of my favorite creative outlets.
+              </p>
+              <a class="photo-link" href="/photos">
+                View photo gallery
+              </a>
+            </div>
+
+            <div class="mini-card">
+              <div class="mini-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 2a7 7 0 0 0-7 7c0 4.25 7 13 7 13s7-8.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/>
+                </svg>
+              </div>
+              <h3>Agriculture</h3>
+              <p>
+                I've always found the agriculture business very interesting! The process to get food onto our tables is an exciting one. 
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <!-- FUN SECTION -->
-      <section class="grid bottom">
-        <div class="card">
-          <h3>Current Book</h3>
-          <p>The Secret Lives of Color</p>
-        </div>
+      <section>
+        <div class="section-title">Sustainability &amp; Civic Climate Work</div>
+        <div class="section-line"></div>
 
         <div class="card">
-          <h3>Podcast Interest</h3>
-          <p>Child developmental psychology</p>
-        </div>
+          <div class="feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.63 3.84C14.54 2.94 10.98 3.3 8.2 5.09 4.73 7.31 3 11.19 3 15.48V21h5.52c4.29 0 8.17-1.73 10.39-5.2 1.79-2.78 2.15-6.34 1.25-9.43-.13-.47-.63-.74-1.1-.61-1.89.54-3.59 1.55-4.99 2.96-1.42 1.41-2.43 3.1-2.97 4.99a.79.79 0 0 1-1.52 0c-.54-1.89-1.55-3.58-2.96-4.99-.35-.35-.72-.68-1.11-.99.74-1.18 1.75-2.2 2.97-2.98 2.39-1.53 5.47-1.84 8.13-.95.42.14.87-.08 1.01-.5.15-.42-.08-.87-.49-1.01Z"/>
+            </svg>
+          </div>
 
-        <div class="card">
-          <h3>Favorite Dessert</h3>
-          <p>
-            Banana bread is such a fun dessert to bake and experiment with because it can never go poorly.
+          <h3 style="margin: 0 0 0.6rem 0; color: #17325c;">Climate Advocacy, Policy, and Environmental Responsibility</h3>
+
+          <p style="margin: 0; color: var(--muted); line-height: 1.9;">
+            Sustainability is not just an abstract interest for me, it is something I have actively engaged with through climate lobbying, policy conversations, and public writing. I’ve written <strong>5</strong> letters to the editor focused on climate-related issues, and I’ve cared deeply about translating environmental urgency into real public action.
           </p>
+
+          <div class="climate-note">
+            I’ve also been interested in carbon dividend policy and broader climate legislation. The Energy Innovation and Carbon Dividend Act is a carbon-pricing bill designed to reduce carbon emissions while returning revenue to households, and Citizens’ Climate Lobby describes it as a bipartisan climate solution framework. I was especially interested in how policy advocacy connects public pressure, economic incentives, and real legislative progress. <a href="https://citizensclimatelobby.org/blog/policy/hr763-the-bipartisan-climate-change-solution/" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: underline;">Read an article on the Carbon Dividend bill</a>.
+          </div>
+
+          <div class="climate-note">
+            I also worked with the team around <strong>Ro Khanna</strong>, the U.S. Representative for California’s 17th Congressional District, to better understand the intersection of climate policy, economics, and public communication. That experience deepened my interest in how environmentally conscious thinking can shape real-world systems and decisions.
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-title">Little Things I’m Into Right Now</div>
+        <div class="section-line"></div>
+
+        <div class="bottom-grid">
+          <div class="reading-card">
+            <div class="reading-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M18 2H8a4 4 0 0 0-4 4v13a1 1 0 0 0 1.45.89C6.84 19.17 8.38 19 10 19h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2Zm0 15h-8c-1.39 0-2.74.18-4 .52V6a2 2 0 0 1 2-2h10v13Z"/>
+              </svg>
+            </div>
+            <h3>Current Book</h3>
+            <p><strong>The Secret Lives of Color</strong>: I love that the books takes the mundane and makes it super cool!</p>
+          </div>
+
+          <div class="reading-card">
+            <div class="reading-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 3a9 9 0 0 0-9 9v7a2 2 0 0 0 2 2h1v-8H5a7 7 0 1 1 14 0h-1v8h1a2 2 0 0 0 2-2v-7a9 9 0 0 0-9-9Zm-3 10h2v8H9v-8Zm4 0h2v8h-2v-8Z"/>
+              </svg>
+            </div>
+            <h3>Current Podcast Interest</h3>
+            <p>I’ve been especially interested in podcasts around <strong>child developmental psychology</strong>, particularly ones that explore how early experiences shape emotion, attachment, learning, and long-term behavior.</p>
+          </div>
+
+          <div class="reading-card">
+            <div class="reading-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2a5 5 0 0 0-5 5c0 .73.16 1.42.43 2.05A6.98 6.98 0 0 0 4 15c0 3.87 3.13 7 7 7s7-3.13 7-7a6.98 6.98 0 0 0-3.43-5.95c.27-.63.43-1.32.43-2.05a5 5 0 0 0-5-5Zm0 2a3 3 0 0 1 3 3c0 .44-.09.86-.25 1.24A6.96 6.96 0 0 0 12 8a6.96 6.96 0 0 0-2.75.24A2.98 2.98 0 0 1 9 7a3 3 0 0 1 3-3Z"/>
+              </svg>
+            </div>
+            <h3>Favorite Dessert</h3>
+            <p><strong>Banana bread</strong> <span class="little-leaf">✿</span> you can play around with the ingredients and it will never turn out bad!</p>
+          </div>
         </div>
       </section>
     </main>
 
     <footer>
-      2026 Riya Hariyaplar
+      2026 Riya Hariyaplar. All rights reserved.
     </footer>
   </body>
 </html>
