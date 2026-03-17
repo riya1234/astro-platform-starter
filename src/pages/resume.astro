@@ -106,13 +106,41 @@
       .page-header {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
-        gap: 1.25rem;
+        align-items: center;
+        text-align: center;
+        gap: 1.15rem;
         margin-bottom: 2.75rem;
       }
 
+      .download-wrap {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 0.35rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.65rem;
+        border-radius: 999px;
+        padding: 1rem 1.8rem;
+        font-weight: 700;
+        transition: 0.2s ease;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #2f6fed, #60a5fa);
+        color: white;
+        box-shadow: 0 12px 30px rgba(59, 130, 246, 0.2);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-1px);
+      }
+
       h1 {
-        font-size: clamp(2.6rem, 6vw, 4.4rem);
+        font-size: clamp(2.8rem, 6vw, 4.4rem);
         line-height: 1.02;
         margin: 0;
         letter-spacing: -0.05em;
@@ -122,7 +150,7 @@
       .page-subtitle {
         color: var(--muted);
         font-size: 1.08rem;
-        margin-top: 0.15rem;
+        margin-top: 0.1rem;
       }
 
       .contact-label-block {
@@ -131,12 +159,13 @@
         letter-spacing: 0.06em;
         text-transform: uppercase;
         color: var(--accent);
-        margin-top: 0.2rem;
+        margin-top: 0.35rem;
       }
 
       .top-contact {
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
         gap: 1rem 1.5rem;
         color: var(--muted);
         font-size: 1rem;
@@ -160,7 +189,7 @@
       }
 
       .disclaimer {
-        max-width: 900px;
+        max-width: 950px;
         background: rgba(255, 255, 255, 0.78);
         border: 1px solid rgba(96, 165, 250, 0.14);
         border-radius: 20px;
@@ -168,33 +197,6 @@
         color: var(--muted);
         line-height: 1.8;
         box-shadow: 0 10px 26px rgba(37, 99, 235, 0.05);
-      }
-
-      .download-wrap {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        margin-top: 0.35rem;
-      }
-
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.65rem;
-        border-radius: 999px;
-        padding: 1rem 1.6rem;
-        font-weight: 700;
-        transition: 0.2s ease;
-      }
-
-      .btn-primary {
-        background: linear-gradient(135deg, #2f6fed, #60a5fa);
-        color: white;
-        box-shadow: 0 12px 30px rgba(59, 130, 246, 0.2);
-      }
-
-      .btn-primary:hover {
-        transform: translateY(-1px);
       }
 
       section {
@@ -339,7 +341,7 @@
 
         .top-contact {
           flex-direction: column;
-          align-items: flex-start;
+          align-items: center;
           gap: 0.75rem;
         }
       }
@@ -361,6 +363,12 @@
 
     <main class="container">
       <div class="page-header">
+        <div class="download-wrap">
+          <a class="btn btn-primary" href="/resume.pdf" download>
+            Download Resume PDF
+          </a>
+        </div>
+
         <div>
           <h1>Riya’s Resume</h1>
           <div class="page-subtitle">
@@ -394,13 +402,7 @@
         </div>
 
         <div class="disclaimer">
-          Due to the proprietary nature of my work, I’m unable to publicly share specific project deliverables. However, my resume highlights the scope, impact, and technical depth of the work I’ve completed.
-        </div>
-
-        <div class="download-wrap">
-          <a class="btn btn-primary" href="/resume.pdf" download>
-            Download Resume PDF
-          </a>
+          Due to the proprietary nature of my work, I’m unable to publicly share specific project deliverables or links to projects I have worked on. However, my resume highlights the scope, impact, and technical depth of the work I’ve completed.
         </div>
       </div>
 
