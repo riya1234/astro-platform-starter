@@ -6,127 +6,309 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Riya Hariyaplar</title>
-
-    <!-- prevents Google indexing -->
-    <meta name="robots" content="noindex, nofollow">
-
     <style>
       :root {
         --bg: #0f172a;
+        --bg-soft: #172554;
+        --card: rgba(30, 41, 59, 0.72);
+        --card-border: rgba(148, 163, 184, 0.18);
         --text: #e5eefb;
         --muted: #bfd2ee;
         --accent: #7dd3fc;
+        --accent-2: #93c5fd;
+        --line: rgba(147, 197, 253, 0.18);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
       }
 
       body {
         margin: 0;
-        font-family: Inter, system-ui, sans-serif;
-        background: linear-gradient(180deg, #081120, #0f172a);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(125, 211, 252, 0.14), transparent 28%),
+          radial-gradient(circle at top right, rgba(59, 130, 246, 0.12), transparent 24%),
+          linear-gradient(180deg, #081120 0%, #0f172a 45%, #13213e 100%);
         color: var(--text);
       }
 
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
       .container {
-        width: min(1000px, 90%);
-        margin: auto;
+        width: min(1120px, calc(100% - 2rem));
+        margin: 0 auto;
       }
 
       nav {
-        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(14px);
+        background: rgba(8, 17, 32, 0.72);
+        border-bottom: 1px solid rgba(147, 197, 253, 0.08);
+      }
+
+      .nav-inner {
         display: flex;
         justify-content: space-between;
+        align-items: center;
+        padding: 1.1rem 0;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .brand {
+        font-size: 1.6rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
       }
 
       .nav-links a {
-        margin-left: 1rem;
         color: var(--muted);
-        text-decoration: none;
+        padding: 0.65rem 1rem;
+        border-radius: 999px;
+        transition: 0.2s ease;
+      }
+
+      .nav-links a:hover {
+        background: rgba(125, 211, 252, 0.1);
+        color: white;
+      }
+
+      main {
+        padding: 3rem 0 4rem;
       }
 
       .hero {
         text-align: center;
-        margin-top: 3rem;
+        padding: 2rem 0 3rem;
       }
 
       .avatar {
         width: 160px;
         height: 160px;
         border-radius: 50%;
-        object-fit: cover;
-        margin-bottom: 1.5rem;
-        border: 2px solid #7dd3fc;
+        margin: 0 auto 1.5rem;
+        background:
+          linear-gradient(135deg, rgba(125, 211, 252, 0.35), rgba(59, 130, 246, 0.12)),
+          rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(147, 197, 253, 0.32);
+        box-shadow: 0 18px 50px rgba(2, 6, 23, 0.45);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--muted);
+        font-size: 0.95rem;
+        text-align: center;
+        padding: 1rem;
       }
 
-      h1 {
-        font-size: 2.8rem;
+      .hero h1 {
+        font-size: clamp(2.5rem, 6vw, 4.3rem);
+        line-height: 1.05;
         margin: 0;
+        letter-spacing: -0.04em;
       }
 
       .subtitle {
-        color: var(--accent);
-        margin-top: 1rem;
+        margin: 1rem auto 0;
+        font-size: clamp(1.08rem, 2vw, 1.45rem);
+        color: var(--accent-2);
+        max-width: 800px;
       }
 
       .intro {
-        margin-top: 1.5rem;
-        line-height: 1.7;
+        max-width: 820px;
+        margin: 1.4rem auto 0;
+        font-size: 1.08rem;
+        line-height: 1.9;
         color: var(--muted);
       }
 
-      .buttons {
+      .button-row {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
         margin-top: 2rem;
       }
 
       .btn {
-        padding: 0.8rem 1.2rem;
-        border-radius: 999px;
-        margin: 0.5rem;
         display: inline-flex;
         align-items: center;
-        gap: 0.5rem;
-        text-decoration: none;
+        gap: 0.65rem;
+        border-radius: 999px;
+        padding: 0.95rem 1.35rem;
+        font-weight: 600;
+        transition: 0.2s ease;
       }
 
       .btn-primary {
-        background: #38bdf8;
-        color: black;
+        background: linear-gradient(135deg, #60a5fa, #38bdf8);
+        color: #081120;
+        box-shadow: 0 10px 30px rgba(56, 189, 248, 0.22);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-1px);
       }
 
       .btn-secondary {
-        border: 1px solid #7dd3fc;
+        border: 1px solid rgba(125, 211, 252, 0.38);
         color: white;
+        background: rgba(125, 211, 252, 0.06);
+      }
+
+      .btn-secondary:hover {
+        background: rgba(125, 211, 252, 0.14);
       }
 
       section {
         margin-top: 4rem;
       }
 
-      .education, .contact {
-        background: #1e293b;
-        padding: 1.5rem;
-        border-radius: 12px;
+      .section-title {
+        font-size: 2rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .section-line {
+        height: 1px;
+        width: 100%;
+        background: var(--line);
+        margin-bottom: 1.5rem;
+      }
+
+      .education-card,
+      .contact-card {
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        border-radius: 24px;
+        box-shadow: 0 12px 40px rgba(2, 6, 23, 0.22);
+      }
+
+      .education-card {
+        padding: 1.8rem;
+      }
+
+      .edu-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: start;
+        flex-wrap: wrap;
+      }
+
+      .edu-school {
+        font-size: 1.9rem;
+        font-weight: 700;
+        margin-bottom: 0.25rem;
+      }
+
+      .edu-degree {
+        font-size: 1.2rem;
+        color: var(--accent-2);
+        font-weight: 600;
+      }
+
+      .edu-right {
+        text-align: right;
+        min-width: 220px;
+        color: var(--muted);
+      }
+
+      .edu-right strong {
+        color: white;
+      }
+
+      .edu-list {
+        margin-top: 1.4rem;
+        padding-left: 1.25rem;
+        color: var(--muted);
+        line-height: 1.85;
+        font-size: 1.06rem;
+      }
+
+      .edu-list strong {
+        color: white;
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      }
+
+      .contact-card {
+        padding: 1.4rem;
+      }
+
+      .contact-label {
+        color: var(--accent-2);
+        font-size: 0.98rem;
+        margin-bottom: 0.55rem;
+      }
+
+      .contact-value {
+        font-size: 1.08rem;
+        line-height: 1.6;
+        word-break: break-word;
+      }
+
+      .contact-value a {
+        text-decoration: underline;
       }
 
       footer {
-        text-align: center;
-        margin-top: 3rem;
-        padding: 1rem;
+        margin-top: 4rem;
+        padding: 1.5rem 0 2.5rem;
         color: var(--muted);
+        text-align: center;
+        border-top: 1px solid rgba(147, 197, 253, 0.08);
+      }
+
+      @media (max-width: 900px) {
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .edu-right {
+          text-align: left;
+        }
       }
     </style>
   </head>
 
   <body>
-    <nav class="container">
-      <div><strong>Riya Hariyaplar</strong></div>
-      <div class="nav-links">
-        <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
+    <nav>
+      <div class="container nav-inner">
+        <div class="brand">Riya Hariyaplar</div>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="/resume">Resume</a>
+          <a href="#education">Education</a>
+          <a href="#contact">Get in Touch</a>
+        </div>
       </div>
     </nav>
 
     <main class="container">
-      <section class="hero">
-        <img class="avatar" src="/photo.jpg" alt="Riya Hariyaplar headshot" />
+      <section class="hero" id="about">
+        <div class="avatar">Add your headshot here later</div>
 
         <h1>Riya Hariyaplar</h1>
 
@@ -135,19 +317,32 @@
         </div>
 
         <div class="intro">
-          I approach problems through an economic lens, using data to understand behavior, uncover patterns, and drive informed decision-making. At UCLA, I’ve built a strong foundation in quantitative analysis, combining statistical methods with economic theory to explore real-world challenges. I’m particularly interested in applying data-driven insights to areas like market dynamics, product strategy, and policy, where analytical thinking can translate into tangible impact.
+          I approach problems through an economic lens, using data to understand
+          behavior, uncover patterns, and drive informed decision-making. At UCLA,
+          I’ve built a strong foundation in quantitative analysis, combining
+          statistical methods with economic theory to explore real-world challenges.
+          I’m particularly interested in applying data-driven insights to areas
+          like market dynamics, product strategy, and policy, where analytical
+          thinking can translate into tangible impact.
         </div>
 
-        <div class="buttons">
-          <a class="btn btn-primary" href="/resume">Resume</a>
+        <div class="button-row">
+          <a class="btn btn-primary" href="/resume">View Resume</a>
 
           <a
             class="btn btn-secondary"
             href="https://www.linkedin.com/in/riyahariyaplar/"
             target="_blank"
+            rel="noopener noreferrer"
           >
-            <!-- LinkedIn icon -->
-            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
               <path d="M6.94 8.5A1.56 1.56 0 1 1 6.94 5.4a1.56 1.56 0 0 1 0 3.1ZM5.59 9.74h2.7V18h-2.7V9.74Zm4.37 0h2.59v1.13h.04c.36-.68 1.24-1.4 2.55-1.4 2.72 0 3.22 1.79 3.22 4.11V18h-2.7v-3.92c0-.94-.02-2.15-1.31-2.15-1.31 0-1.51 1.02-1.51 2.08V18h-2.7V9.74Z"/>
             </svg>
             LinkedIn
@@ -156,44 +351,59 @@
       </section>
 
       <section id="education">
-        <h2>Education</h2>
-        <div class="education">
-          <strong>University of California, Los Angeles (UCLA)</strong><br />
-          B.S. in Economics & Data Science Double Major<br />
-          Graduation: June 2026<br />
-          GPA: 3.9
+        <div class="section-title">Education</div>
+        <div class="section-line"></div>
 
-          <ul>
+        <div class="education-card">
+          <div class="edu-top">
+            <div>
+              <div class="edu-school">University of California, Los Angeles (UCLA)</div>
+              <div class="edu-degree">B.S. in Economics &amp; Data Science Double Major</div>
+            </div>
+
+            <div class="edu-right">
+              <div><strong>Graduation:</strong> June 2026</div>
+              <div><strong>GPA:</strong> 3.9</div>
+            </div>
+          </div>
+
+          <ul class="edu-list">
             <li>
-              Affiliations: Tech & Finance Crew of Bruin Women in Business,
+              <strong>Affiliations:</strong> Tech &amp; Finance Crew of Bruin Women in Business,
               Bruin Capital Management, AI Club, Disabled Student Union
             </li>
             <li>
-              Relevant Coursework: Corporate Strategy, Advanced Data Science,
-              Multivariable Calculus, Data Structures and Design, Discrete Math,
-              Advanced Probability & Statistics, Machine Learning,
-              Microeconomic Theory, Accounting
+              <strong>Relevant Coursework:</strong> Corporate Strategy, Advanced Data Science,
+              Multivariable Calculus, Data Structures and Design, Discrete Math, Advanced
+              Probability &amp; Statistics, Machine Learning, Microeconomic Theory, Accounting
             </li>
           </ul>
         </div>
       </section>
 
       <section id="contact">
-        <h2>Get in Touch</h2>
-        <div class="contact">
-          <p>
-            Email:
-            <a href="mailto:riya.hariyaplar@gmail.com">
-              riya.hariyaplar@gmail.com
-            </a>
-          </p>
+        <div class="section-title">Get in Touch</div>
+        <div class="section-line"></div>
 
-          <p>
-            Phone:
-            <a href="tel:4088875180">408-887-5180</a>
-          </p>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="contact-label">Email</div>
+            <div class="contact-value">
+              <a href="mailto:riya.hariyaplar@gmail.com">riya.hariyaplar@gmail.com</a>
+            </div>
+          </div>
 
-          <p>Location: San Jose, CA</p>
+          <div class="contact-card">
+            <div class="contact-label">Phone</div>
+            <div class="contact-value">
+              <a href="tel:4088875180">408-887-5180</a>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-label">Location</div>
+            <div class="contact-value">San Jose, CA</div>
+          </div>
         </div>
       </section>
     </main>
